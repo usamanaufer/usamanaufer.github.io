@@ -424,6 +424,26 @@ body {
     box-shadow: 0 8px 20px rgba(255, 94, 98, 0.3);
 }
 
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.link-privacy {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.link-privacy:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
 /* --- Workflow Card Update --- */
 .workflow-card {
     grid-column: span 3;

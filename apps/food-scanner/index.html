@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Scanner - Halal Product Identifier | Usama</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .app-hero {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .app-icon-display {
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255, 99, 102, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .app-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .app-tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn-download {
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main-container">
+        <nav class="navbar fade-in">
+            <a href="../../index.html" class="logo" style="text-decoration: none;">
+                <div class="logo-icon"><i class="ri-arrow-left-line"></i></div>
+                <span class="email">Back to Portfolio</span>
+            </a>
+        </nav>
+
+        <section class="app-hero fade-in">
+            <img src="../../foodscannerapp.png" alt="Food Scanner Icon" class="app-icon-display">
+            <h1 class="app-title">Food Scanner</h1>
+            <p class="app-tagline">Scan barcodes to instantly check the halal status of food products. Fast, reliable,
+                and easy to use.</p>
+
+            <div class="download-buttons">
+                <a href="#" class="btn-download">
+                    <i class="ri-apple-fill"></i> App Store
+                </a>
+                <a href="#" class="btn-download">
+                    <i class="ri-google-play-fill"></i> Google Play
+                </a>
+            </div>
+        </section>
+
+        <footer class="fade-in delay-2">
+            <div class="footer-links">
+                <a href="./privacy.html">Privacy Policy</a>
+                <a href="mailto:contact@usamanaufer.com">Support</a>
+                <a href="../../index.html">Terms of Service</a>
+            </div>
+            <p style="margin-top: 2rem; color: var(--text-secondary); text-align: center;">&copy; 2026 Usama. All rights
+                reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>
