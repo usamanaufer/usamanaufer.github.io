@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usama Naufer | Product Designer & Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Remix Icons for UI elements -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="main-container">
+        <!-- Navigation -->
+        <nav class="navbar fade-in">
+            <div class="logo">
+                <div class="logo-icon"><i class="ri-code-s-slash-line"></i></div>
+                <span class="email">contact@usamanaufer.com</span>
+            </div>
+            <button class="menu-btn"><i class="ri-menu-4-line"></i></button>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero fade-in delay-1">
+            <div class="profile-header">
+                <h1>
+                    Hi, I’m
+                    <span class="profile-pic-wrapper">
+                        <img src="./profile.jpg" alt="Usama" class="profile-pic">
+                    </span>
+                    Usama!
+                </h1>
+                <h1 class="subtitle">I’m an <span class="highlight">Indie App Developer</span> building <span
+                        class="company">cool apps.</span></h1>
+            </div>
+
+            <div class="status-badge fade-in delay-2">
+                <span class="status-dot"></span> Open to work
+            </div>
+
+            <div class="cta-section fade-in delay-2">
+                <a href="mailto:contact@usamanaufer.com" class="btn-primary">Book a call</a>
+                <p class="cta-text">Feel free to explore my portfolio and reach out — I’d love to connect!</p>
+            </div>
+        </header>
+
+        <!-- Apps Section -->
+        <section class="apps-section">
+            <h2 class="section-title fade-in delay-3">My Apps</h2>
+            <div class="bento-grid">
+
+                <!-- App 1: ViralCap -->
+                <div class="card app-card viralcap fade-in delay-3">
+                    <div class="card-icon-wrapper">
+                        <img src="./viralcap.png" alt="ViralCap" class="app-icon-large">
+                    </div>
+                    <div class="card-content">
+                        <h3>ViralCap</h3>
+                        <p class="app-category">Video Editor</p>
+                        <p class="app-description">Add AI captions to your videos in seconds.</p>
+                        <a href="#" class="btn-app">View App <i class="ri-arrow-right-up-line"></i></a>
+                    </div>
+                </div>
+
+                <!-- App 2: Sri Lanka Prayer Times -->
+                <div class="card app-card prayer fade-in delay-4">
+                    <div class="card-icon-wrapper">
+                        <img src="./srilankaprayertimes.png" alt="Sri Lanka Prayer Times" class="app-icon-large">
+                    </div>
+                    <div class="card-content">
+                        <h3>SL Prayer Times</h3>
+                        <p class="app-category">Utility</p>
+                        <p class="app-description">Accurate prayer times and qibla direction.</p>
+                        <a href="#" class="btn-app">View App <i class="ri-arrow-right-up-line"></i></a>
+                    </div>
+                </div>
+
+                <!-- App 3: Food Scanner App -->
+                <div class="card app-card scanner fade-in delay-5">
+                    <div class="card-icon-wrapper">
+                        <img src="./foodscannerapp.png" alt="Food Scanner" class="app-icon-large">
+                    </div>
+                    <div class="card-content">
+                        <h3>Food Scanner</h3>
+                        <p class="app-category">Health & Diet</p>
+                        <p class="app-description">Scan barcodes to check halal status instantly.</p>
+                        <a href="#" class="btn-app">View App <i class="ri-arrow-right-up-line"></i></a>
+                    </div>
+                </div>
+
+                <!-- Workflow / Process Card -->
+                <div class="card workflow-card fade-in delay-6">
+                    <div class="card-label">How I work</div>
+                    <div class="workflow-content">
+                        <h3>Turning Ideas into Apps</h3>
+                        <p>From initial concept to App Store launch, I handle the entire development lifecycle with
+                            precision and polish.</p>
+                    </div>
+                    <div class="workflow-steps">
+                        <button class="step-btn active">Idea</button>
+                        <button class="step-btn">Design</button>
+                        <button class="step-btn">Dev</button>
+                        <button class="step-btn">Launch</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Usama. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple interactions for the workflow tabs
+        const steps = document.querySelectorAll('.step-btn');
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                steps.forEach(s => s.classList.remove('active'));
+                step.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
