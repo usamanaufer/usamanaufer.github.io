@@ -4,126 +4,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralCap - AI Caption Video Editor | Usama</title>
-    <link rel="stylesheet" href="../../styles.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <title>ViralCap - AI Caption Writer for TikTok, Reels & Shorts</title>
+    <meta name="description"
+        content="Transform your videos into viral social media posts. AI-powered captions with optimized hooks, smart emojis, and trending hashtags for TikTok, Instagram Reels, and YouTube Shorts.">
+    <meta name="keywords"
+        content="AI Caption Generator, Instagram Hook Writer, Viral TikTok Descriptions, Social Media Captions">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ViralCap - AI Caption Writer">
+    <meta property="og:description" content="Transform your videos into viral posts with AI-powered captions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usamanaufer.online/apps/viralcap/">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <style>
-        .app-hero {
-            padding: 6rem 0;
-            text-align: center;
-        }
 
-        .app-icon-display {
-            width: 120px;
-            height: 120px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            margin-bottom: 2rem;
-        }
+    <link rel="stylesheet" href="./app.css">
 
-        .app-title {
-            font-family: var(--font-heading);
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .app-tagline {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .download-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .btn-download {
-            background: #000;
-            color: #fff;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 100px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition-smooth);
-        }
-
-        .btn-download:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer-links {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-    </style>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ViralCap",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "AI-powered caption generator for social media videos."
+    }
+    </script>
 </head>
 
 <body>
-    <main class="main-container">
-        <nav class="navbar fade-in">
-            <a href="../../" class="logo" style="text-decoration: none;">
-                <div class="logo-icon"><i class="ri-arrow-left-line"></i></div>
-                <span class="email">Back to Portfolio</span>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="bg-gradient" aria-hidden="true"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav fade-up">
+            <a href="../../" class="nav-back" aria-label="Back to portfolio">
+                <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+                Back
             </a>
         </nav>
 
-        <section class="app-hero fade-in">
-            <img src="../../viralcap.png" alt="ViralCap Icon" class="app-icon-display">
-            <h1 class="app-title">ViralCap</h1>
-            <p class="app-tagline">Add AI-powered captions to your videos in seconds. Perfect for TikTok, Reels, and
-                Shorts.</p>
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Hero Section -->
+            <section class="hero" aria-labelledby="hero-heading">
+                <div class="hero-badge fade-up">
+                    <i class="ri-sparkle-fill" aria-hidden="true"></i>
+                    Powered by AI
+                </div>
 
-            <div class="download-buttons">
-                <a href="#" class="btn-download">
-                    <i class="ri-apple-fill"></i> App Store
-                </a>
-                <a href="#" class="btn-download">
-                    <i class="ri-google-play-fill"></i> Google Play
-                </a>
-            </div>
-        </section>
+                <img src="../../viralcap.png" alt="ViralCap App Icon" class="app-icon fade-up delay-1" width="100"
+                    height="100" loading="eager">
 
-        <footer class="fade-in delay-2">
-            <div class="footer-links">
+                <h1 id="hero-heading" class="fade-up delay-2">
+                    Your Videos, Their Voice.<br>
+                    <span>AI Captions that Go Viral.</span>
+                </h1>
+
+                <p class="hero-description fade-up delay-3">
+                    Transform your TikToks and Reels into high-engagement posts in seconds.
+                    Optimized hooks, smart emojis, and trending hashtags included.
+                </p>
+
+                <div class="cta-group fade-up delay-4">
+                    <a href="#" class="btn-primary glow-pulse">
+                        <i class="ri-apple-fill" aria-hidden="true"></i>
+                        Get for iOS
+                    </a>
+                    <a href="#" class="btn-secondary">
+                        <i class="ri-google-play-fill" aria-hidden="true"></i>
+                        Get for Android
+                    </a>
+                </div>
+            </section>
+
+            <!-- Bento Feature Grid -->
+            <section class="features" aria-labelledby="features-heading">
+                <header class="section-header">
+                    <h2 id="features-heading">Everything You Need to Go Viral</h2>
+                    <p>Professional-grade tools, zero effort required.</p>
+                </header>
+
+                <div class="bento-grid">
+                    <article class="bento-card fade-up">
+                        <div class="bento-icon" aria-hidden="true"><i class="ri-mic-line"></i></div>
+                        <h3>AI Transcription</h3>
+                        <p>Whisper-powered speech-to-text with incredible accuracy in multiple languages.</p>
+                    </article>
+
+                    <article class="bento-card fade-up delay-1">
+                        <div class="bento-icon" aria-hidden="true"><i class="ri-emotion-line"></i></div>
+                        <h3>Tone Selector</h3>
+                        <p>Switch between Funny, Professional, Sarcastic, or Inspirational styles.</p>
+                    </article>
+
+                    <article class="bento-card fade-up delay-2">
+                        <div class="bento-icon" aria-hidden="true"><i class="ri-flashlight-line"></i></div>
+                        <h3>Lightning Fast</h3>
+                        <p>FFmpeg-optimized local processing. Up to 10x faster uploads.</p>
+                    </article>
+
+                    <article class="bento-card fade-up delay-3">
+                        <div class="bento-icon" aria-hidden="true"><i class="ri-global-line"></i></div>
+                        <h3>Multi-Platform</h3>
+                        <p>Captions optimized for Instagram, TikTok, and YouTube Shorts.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="how-it-works" aria-labelledby="how-heading">
+                <header class="section-header">
+                    <h2 id="how-heading">How It Works</h2>
+                    <p>From video to viral in 5 simple steps.</p>
+                </header>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Upload</h4>
+                        <p>Select any video under 10 minutes.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Extract</h4>
+                        <p>Local audio processing for speed.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Transcribe</h4>
+                        <p>World-class AI speech-to-text.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Analyze</h4>
+                        <p>Our advanced AI understands your vibe.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h4>Viral</h4>
+                        <p>Copy your perfect caption.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust Section -->
+            <section class="trust fade-up" aria-label="Social proof">
+                <div class="trust-badge">
+                    <i class="ri-user-star-fill" aria-hidden="true"></i>
+                    <span>Join 10,000+ creators going viral with ViralCap</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <nav class="footer-links" aria-label="Footer">
                 <a href="./privacy/">Privacy Policy</a>
                 <a href="mailto:contact@usamanaufer.com">Support</a>
-                <a href="../../">Terms of Service</a>
-            </div>
-            <p style="margin-top: 2rem; color: var(--text-secondary); text-align: center;">&copy; 2026 Usama. All rights
-                reserved.</p>
+                <a href="../../">More Apps</a>
+            </nav>
+            <p class="footer-copy">© 2026 Usama. Stop writing. Start growing.</p>
         </footer>
-    </main>
+    </div>
+
+    <!-- Scroll-triggered animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stepsContainer = document.querySelector('.steps');
+            const steps = document.querySelectorAll('.step');
+
+            // Intersection Observer for How It Works section
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add animate class to trigger progress line
+                        stepsContainer.classList.add('animate');
+
+                        // Animate each step with staggered delay
+                        steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.classList.add('visible');
+                            }, 200 + (index * 300)); // 300ms between each step
+                        });
+
+                        // Disconnect observer after animation starts
+                        observer.disconnect();
+                    }
+                });
+            }, {
+                threshold: 0.3 // Trigger when 30% of section is visible
+            });
+
+            // Observe the steps container
+            if (stepsContainer) {
+                observer.observe(stepsContainer);
+            }
+        });
+    </script>
 </body>
 
 </html>
