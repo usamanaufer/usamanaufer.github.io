@@ -971,23 +971,10 @@
         let prayerData = null;
         let tickInterval = null;
 
-        async function init() {
+        async function fetchPrayerData() {
             try {
                 const res = await fetch('../prayer_data.json');
                 prayerData = await res.json();
-
-                const select = document.getElementById('district-select');
-                // Restore saved district
-                const savedDistrict = localStorage.getItem('prayer-district');
-                if (savedDistrict) select.value = savedDistrict;
-
-                select.addEventListener('change', () => {
-                    localStorage.setItem('prayer-district', select.value);
-                    render();
-                });
-
-                render();
-                startTick();
             } catch (e) {
                 console.error('Failed to load prayer data:', e);
             }
@@ -1142,23 +1129,24 @@
 
         async function init() {
             await fetchPrayerData();
+
+            const ds = document.getElementById('district-select');
+
+            // Set default from localStorage if exists
+            const saved = localStorage.getItem('prayer-district');
+            if (saved) {
+                ds.value = saved;
+            }
+
             render();
             updateSEO();
             startTick();
 
-            const ds = document.getElementById('district-select');
             ds.addEventListener('change', () => {
+                localStorage.setItem('prayer-district', ds.value);
                 render();
                 updateSEO();
             });
-
-            // Set default from localStorage if exists
-            const saved = localStorage.getItem('lastDistrict');
-            if (saved) {
-                ds.value = saved;
-                render();
-                updateSEO();
-            }
         }
 
         document.addEventListener('DOMContentLoaded', init);
