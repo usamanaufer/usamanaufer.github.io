@@ -983,18 +983,32 @@
         let tickInterval = null;
 
         async function fetchPrayerData() {
+            // Standardizing path to avoid trailing slash issues
+            const dataPath = '/apps/sl-prayer-times/prayer_data.json';
             try {
-                const res = await fetch('../prayer_data.json');
+                const res = await fetch(dataPath);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 prayerData = await res.json();
             } catch (e) {
-                console.error('Failed to load prayer data:', e);
+                console.error('Fetch failed:', e);
+                // Fallback to relative path
+                try {
+                    const res = await fetch('../prayer_data.json');
+                    prayerData = await res.json();
+                } catch (e2) {
+                    console.error('Fallback failed:', e2);
+                }
             }
         }
 
         function parseTime(str) {
+            if (!str || typeof str !== 'string') return new Date();
             const now = new Date();
-            const [time, mod] = str.split(' ');
+            const parts = str.split(' ');
+            if (parts.length < 2) return now;
+            const [time, mod] = parts;
             let [h, m] = time.split(':').map(Number);
+            if (isNaN(h) || isNaN(m)) return now;
             if (h === 12) h = 0;
             if (mod === 'PM') h += 12;
             const d = new Date(now);
@@ -1004,7 +1018,10 @@
 
         function render() {
             if (!prayerData) return;
-            const id = document.getElementById('district-select').value;
+            const ds = document.getElementById('district-select');
+            if (!ds) return;
+
+            const id = ds.value;
             const district = prayerData.districts.find(d => d.id === id);
             if (!district) return;
 
@@ -1015,23 +1032,18 @@
             if (!times) return;
 
             // Update date
-            const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('display-date').textContent = now.toLocaleDateString('en-LK', opts);
+            const dateEl = document.getElementById('display-date');
+            if (dateEl) {
+                const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                dateEl.textContent = now.toLocaleDateString('en-LK', opts);
+            }
 
             // Update grid
-            const prayerIcons = {
-                fajr: 'ri-sparkling-line',
-                sunrise: 'ri-sun-line',
-                dhuhr: 'ri-sun-fill',
-                asr: 'ri-sun-foggy-line',
-                maghrib: 'ri-sun-cloudy-line',
-                isha: 'ri-moon-fill'
-            };
-
             for (const [key, val] of Object.entries(times)) {
                 const slot = document.querySelector(`.prayer-slot[data-prayer="${key}"]`);
                 if (slot) {
-                    slot.querySelector('.slot-time').textContent = val;
+                    const timeEl = slot.querySelector('.slot-time');
+                    if (timeEl) timeEl.textContent = val || '--:--';
                 }
             }
 
@@ -1039,12 +1051,14 @@
         }
 
         function updateNext(times) {
+            if (!times) return;
             const now = new Date();
             const order = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
             let next = null;
             let nextTime = null;
 
             for (const p of order) {
+                if (!times[p]) continue;
                 const t = parseTime(times[p]);
                 if (t > now) {
                     next = p;
@@ -1053,45 +1067,53 @@
                 }
             }
 
-            if (!next) {
+            if (!next && times['fajr']) {
                 next = 'fajr';
                 nextTime = parseTime(times['fajr']);
                 nextTime.setDate(nextTime.getDate() + 1);
             }
 
+            if (!next) return;
+
             // Update name
-            document.getElementById('next-prayer-name').textContent =
-                next.charAt(0).toUpperCase() + next.slice(1);
+            const nextNameEl = document.getElementById('next-prayer-name');
+            if (nextNameEl) nextNameEl.textContent = next.charAt(0).toUpperCase() + next.slice(1);
 
             // Update exact time
-            document.getElementById('next-prayer-time').innerHTML =
-                `<i class="ri-time-fill"></i> ${times[next]}`;
+            const nextTimeEl = document.getElementById('next-prayer-time');
+            if (nextTimeEl) {
+                nextTimeEl.innerHTML = `<i class="ri-time-fill"></i> ${times[next] || '--:--'}`;
+            }
 
-            // Active state and passed state
-            document.querySelectorAll('.prayer-slot').forEach(el => {
-                el.classList.remove('active', 'passed');
-            });
-
+            // States
+            document.querySelectorAll('.prayer-slot').forEach(el => el.classList.remove('active', 'passed'));
             const activeSlot = document.querySelector(`.prayer-slot[data-prayer="${next}"]`);
             if (activeSlot) activeSlot.classList.add('active');
 
-            // Mark passed prayers
+            // Pass status
             for (const p of order) {
+                if (!times[p]) continue;
                 const t = parseTime(times[p]);
                 if (t <= now && p !== next) {
                     const slot = document.querySelector(`.prayer-slot[data-prayer="${p}"]`);
                     if (slot) slot.classList.add('passed');
                 }
             }
-            // Also mark sunrise as passed if applicable
-            const sunriseTime = parseTime(times['sunrise']);
-            const sunriseSlot = document.querySelector('.prayer-slot[data-prayer="sunrise"]');
-            if (sunriseTime <= now && sunriseSlot) sunriseSlot.classList.add('passed');
+            if (times['sunrise']) {
+                const sunriseTime = parseTime(times['sunrise']);
+                const sunriseSlot = document.querySelector('.prayer-slot[data-prayer="sunrise"]');
+                if (sunriseTime <= now && sunriseSlot) sunriseSlot.classList.add('passed');
+            }
 
-            updateCountdown(nextTime);
+            if (nextTime) updateCountdown(nextTime);
         }
 
         function updateCountdown(target) {
+            const hEl = document.getElementById('cd-hours');
+            const mEl = document.getElementById('cd-minutes');
+            const sEl = document.getElementById('cd-seconds');
+            if (!hEl || !mEl || !sEl) return;
+
             const now = new Date();
             let diff = target - now;
             if (diff <= 0) { render(); return; }
@@ -1100,59 +1122,47 @@
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
 
-            document.getElementById('cd-hours').textContent = h.toString().padStart(2, '0');
-            document.getElementById('cd-minutes').textContent = m.toString().padStart(2, '0');
-            document.getElementById('cd-seconds').textContent = s.toString().padStart(2, '0');
+            hEl.textContent = h.toString().padStart(2, '0');
+            mEl.textContent = m.toString().padStart(2, '0');
+            sEl.textContent = s.toString().padStart(2, '0');
         }
 
         function startTick() {
             if (tickInterval) clearInterval(tickInterval);
             tickInterval = setInterval(() => {
-                const id = document.getElementById('district-select').value;
-                const district = prayerData?.districts.find(d => d.id === id);
-                if (!district) return;
-                const now = new Date();
-                const times = district.prayer_times?.[now.getMonth() + 1]?.[now.getDate()];
-                if (times) updateNext(times);
+                if (!prayerData) return;
+                const ds = document.getElementById('district-select');
+                if (!ds) return;
+
+                const id = ds.value;
+                const district = prayerData.districts.find(d => d.id === id);
+                if (district) {
+                    const now = new Date();
+                    const times = district.prayer_times?.[now.getMonth() + 1]?.[now.getDate()];
+                    if (times) updateNext(times);
+                }
             }, 1000);
         }
 
         function updateSEO() {
-            const id = document.getElementById('district-select').value;
+            const ds = document.getElementById('district-select');
+            if (!ds) return;
+            const id = ds.value;
             const name = id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' ');
             const now = new Date();
             const dateStr = now.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
-
-            const title = `${name} Prayer Times Today — ${dateStr} | Live Countdown`;
-            document.title = title;
-
-            // Meta tags
-            const desc = `Live prayer times and countdown for ${name}, Sri Lanka on ${dateStr}. Accurate Fajr, Dhuhr, Asr, Maghrib, and Isha times.`;
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) metaDesc.setAttribute('content', desc);
-
-            const ogTitle = document.querySelector('meta[property="og:title"]');
-            if (ogTitle) ogTitle.setAttribute('content', title);
-
-            const ogDesc = document.querySelector('meta[property="og:description"]');
-            if (ogDesc) ogDesc.setAttribute('content', desc);
+            document.title = `${name} Prayer Times Today — ${dateStr} | Live Countdown`;
         }
 
         async function init() {
             await fetchPrayerData();
-
             const ds = document.getElementById('district-select');
-
-            // Set default from localStorage if exists
+            if (!ds) return;
             const saved = localStorage.getItem('prayer-district');
-            if (saved) {
-                ds.value = saved;
-            }
-
+            if (saved) ds.value = saved;
             render();
             updateSEO();
             startTick();
-
             ds.addEventListener('change', () => {
                 localStorage.setItem('prayer-district', ds.value);
                 render();
