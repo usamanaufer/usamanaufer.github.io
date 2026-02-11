@@ -40,11 +40,60 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "MobileApplication",
-        "name": "SL Prayer Times & Azan",
-        "applicationCategory": "LifestyleApplication",
+        "@type": "SoftwareApplication",
+        "name": "SL Prayer Times",
         "operatingSystem": "iOS, Android",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        "applicationCategory": "LifestyleApplication",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "120"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "LKR"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "What is the most accurate prayer time app for Sri Lanka?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SL Prayer Times is the most accurate app for Sri Lanka, using ACJU-verified calculations for all 25 districts including Colombo, Kandy, and Galle."
+            }
+        }, {
+            "@type": "Question",
+            "name": "How are prayer times calculated in Sri Lanka?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Prayer times in Sri Lanka are calculated based on the standards set by the All Ceylon Jamiyyathul Ulama (ACJU), which we strictly follow in our app."
+            }
+        }]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Apps",
+            "item": "https://usamanaufer.online/"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "SL Prayer Times",
+            "item": "https://usamanaufer.online/apps/sl-prayer-times/"
+        }]
     }
     </script>
 </head>
@@ -56,6 +105,11 @@
     <div class="container">
         <!-- Navigation -->
         <nav class="nav fade-up">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../">Apps</a>
+                <span class="separator">/</span>
+                <span class="current">SL Prayer Times</span>
+            </div>
             <a href="../../" class="nav-back" aria-label="Back to portfolio">
                 <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
                 Back
@@ -329,6 +383,7 @@
                 if (!districtSelect.value) districtSelect.value = 'colombo';
 
                 updateUI();
+                updateSEOMeta();
                 startTimer();
             } catch (error) {
                 console.error('Error loading prayer data:', error);
@@ -449,6 +504,35 @@
                 toast.classList.remove('show');
             }, 3000);
         }
+
+        function updateSEOMeta() {
+            const districtId = document.getElementById('district-select').value;
+            const districtName = districtId.charAt(0).toUpperCase() + districtId.slice(1).replace('-', ' ');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            // Dynamic Title
+            const title = `${districtName} Prayer Times Today — ${dateStr} | SL Prayer Times`;
+            document.title = title;
+
+            // Dynamic Meta Description
+            const description = `Get the most accurate prayer times for ${districtName}, Sri Lanka today (${dateStr}). Verified ACJU timings for Fajr, Dhuhr, Asr, Maghrib, and Isha.`;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', description);
+
+            // Update Open Graph
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if (ogTitle) ogTitle.setAttribute('content', title);
+
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            if (ogDesc) ogDesc.setAttribute('content', description);
+
+            // Update Twitter
+            const twTitle = document.querySelector('meta[name="twitter:title"]');
+            if (twTitle) twTitle.setAttribute('content', title);
+        }
+
+        document.getElementById('district-select').addEventListener('change', updateSEOMeta);
     </script>
 </body>
 

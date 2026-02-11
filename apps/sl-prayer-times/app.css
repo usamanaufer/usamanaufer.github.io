@@ -569,6 +569,40 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/* === Breadcrumbs === */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.breadcrumb a {
+    color: var(--slate-500);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--emerald-600);
+}
+
+.breadcrumb .separator {
+    color: var(--slate-300);
+}
+
+.breadcrumb .current {
+    color: var(--emerald-700);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-6) 0;
+}
+
 .cta-buttons {
     display: flex;
     justify-content: center;

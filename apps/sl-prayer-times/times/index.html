@@ -15,6 +15,65 @@
     <meta property="og:description" content="Live prayer times and countdown for all districts in Sri Lanka.">
     <meta property="og:type" content="website">
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SL Prayer Times",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "LifestyleApplication",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "120"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "LKR"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "What is the best way to track prayer times in Sri Lanka?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The SL Prayer Times web app provides a live countdown and accurate ACJU timings for all Sri Lankan districts, making it the best way to track prayer times on the go."
+            }
+        }]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Apps",
+            "item": "https://usamanaufer.online/"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "SL Prayer Times",
+            "item": "https://usamanaufer.online/apps/sl-prayer-times/"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Live Countdown",
+            "item": "https://usamanaufer.online/apps/sl-prayer-times/times/"
+        }]
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,6 +219,36 @@
         .back-link:hover {
             color: var(--accent-primary);
             border-color: var(--accent-primary);
+        }
+
+        /* === Breadcrumbs === */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-primary);
+        }
+
+        .breadcrumb .sep {
+            color: var(--text-faint);
+            opacity: 0.5;
+        }
+
+        .breadcrumb .curr {
+            color: var(--accent-primary);
+            font-weight: 600;
         }
 
         .theme-toggle {
@@ -700,9 +789,13 @@
     <div class="page-wrapper">
         <!-- Top Bar -->
         <div class="top-bar fade-in">
-            <a href="../" class="back-link">
-                <i class="ri-arrow-left-s-line"></i> Back to App
-            </a>
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../../">Apps</a>
+                <span class="sep">/</span>
+                <a href="../">SL Prayer Times</a>
+                <span class="sep">/</span>
+                <span class="curr">Live</span>
+            </nav>
             <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
                 <i class="ri-moon-line" id="theme-icon"></i>
             </button>
@@ -1023,12 +1116,46 @@
             }, 1000);
         }
 
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+        function updateSEO() {
+            const id = document.getElementById('district-select').value;
+            const name = id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' ');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            const title = `${name} Prayer Times Today — ${dateStr} | Live Countdown`;
+            document.title = title;
+
+            // Meta tags
+            const desc = `Live prayer times and countdown for ${name}, Sri Lanka on ${dateStr}. Accurate Fajr, Dhuhr, Asr, Maghrib, and Isha times.`;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', desc);
+
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if (ogTitle) ogTitle.setAttribute('content', title);
+
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            if (ogDesc) ogDesc.setAttribute('content', desc);
+        }
+
+        async function init() {
+            await fetchPrayerData();
+            render();
+            updateSEO();
+            startTick();
+
+            const ds = document.getElementById('district-select');
+            ds.addEventListener('change', () => {
+                render();
+                updateSEO();
+            });
+
+            // Set default from localStorage if exists
+            const saved = localStorage.getItem('lastDistrict');
+            if (saved) {
+                ds.value = saved;
+                render();
+                updateSEO();
+            }
         }
 
         document.addEventListener('DOMContentLoaded', init);

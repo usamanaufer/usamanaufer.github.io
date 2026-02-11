@@ -5,9 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-itunes-app" content="app-id=6758813401">
-    <title>Beta Testing Status - SL Prayer Times</title>
     <meta name="description"
         content="Beta testing for SL Prayer Times is currently in progress. Signups are now closed. Stay tuned for the official release.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Apps",
+            "item": "https://usamanaufer.online/"
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "SL Prayer Times",
+            "item": "https://usamanaufer.online/apps/sl-prayer-times/"
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Beta Status",
+            "item": "https://usamanaufer.online/apps/sl-prayer-times/beta/"
+        }]
+    }
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" href="../favicon.png" type="image/png">
@@ -147,6 +170,14 @@
     <div class="bg-gradient" aria-hidden="true"></div>
 
     <div class="beta-container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"
+            style="margin-bottom: var(--space-8); display: flex; gap: 8px; font-size: 0.8rem; font-weight: 500; opacity: 0.6;">
+            <a href="../../../" style="color: inherit; text-decoration: none;">Apps</a>
+            <span>/</span>
+            <a href="../" style="color: inherit; text-decoration: none;">SL Prayer Times</a>
+            <span>/</span>
+            <span style="color: var(--brand-primary); font-weight: 700;">Beta</span>
+        </nav>
         <main class="fade-up">
             <header class="status-header">
                 <div class="icon-wrapper">
