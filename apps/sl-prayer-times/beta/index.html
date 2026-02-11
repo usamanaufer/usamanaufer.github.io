@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Testing Status - SL Prayer Times</title>
+    <meta name="description"
+        content="Beta testing for SL Prayer Times is currently in progress. Signups are now closed. Stay tuned for the official release.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../app.css">
+    <style>
+        :root {
+            --brand-primary: var(--emerald-600);
+            --brand-hover: var(--emerald-700);
+        }
+
+        .beta-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-6);
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .status-header {
+            margin-bottom: var(--space-8);
+            position: relative;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: var(--space-10);
+        }
+
+        .app-icon-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.3), var(--shadow-glow);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lock-badge {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            background: var(--white);
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-xl);
+            font-size: 1.5rem;
+            color: var(--slate-900);
+            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
+        }
+
+        @keyframes bounceIn {
+            from {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .status-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.25rem, 8vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--slate-900);
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.02em;
+        }
+
+        .status-header p {
+            font-size: 1.125rem;
+            color: var(--slate-600);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .closure-badge {
+            display: inline-block;
+            padding: var(--space-2) var(--space-4);
+            background: var(--slate-100);
+            color: var(--slate-600);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-6);
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-8);
+            background: var(--slate-900);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: var(--radius-lg);
+            transition: var(--transition-smooth);
+            margin-top: var(--space-10);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-home:hover {
+            background: var(--slate-800);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+
+    <div class="beta-container">
+        <main class="fade-up">
+            <header class="status-header">
+                <div class="icon-wrapper">
+                    <img src="../../../srilankaprayertimes.png" alt="SL Prayer Times Icon" class="app-icon-large">
+                    <div class="lock-badge">
+                        <i class="ri-lock-2-fill"></i>
+                    </div>
+                </div>
+
+                <div class="closure-badge">Testing in Progress</div>
+                <h1>Hello Android Users, we hear you.</h1>
+                <p>We understand how much you need the app, and we've heard all your requests! We're working hard behind
+                    the scenes to bring SL Prayer Times to the Play Store. <br><br>
+                    Follow <strong><a
+                            href="https://www.instagram.com/teapodu?igsh=MWNvdjhvdjUwcmUzag%3D%3D&utm_source=qr"
+                            target="_blank" style="color: var(--emerald-600);">@teapodu</a></strong> to stay updated.
+                    We'll be sharing
+                    an update very soon! <br><br>
+                    You can approximately expect the app on the Play Store within <strong>20-25 days</strong> after our
+                    current testing phase is complete.</p>
+
+                <a href="../" class="btn-home">
+                    <i class="ri-arrow-left-line"></i> Back to Home
+                </a>
+            </header>
+        </main>
+
+        <footer class="footer" style="margin-top: var(--space-20); opacity: 0.5;">
+            <p class="footer-copy">© 2026 Usama Naufer. Building for Sri Lanka 🇱🇰</p>
+        </footer>
+    </div>
+</body>
+
+</html>

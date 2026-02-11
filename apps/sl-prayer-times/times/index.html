@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times — Sri Lanka | Live Countdown</title>
+    <meta name="description"
+        content="Live prayer times and countdown for all 25+ districts in Sri Lanka. Accurate Fajr, Dhuhr, Asr, Maghrib, and Isha times.">
+    <meta name="theme-color" content="#064e3b">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prayer Times — Sri Lanka">
+    <meta property="og:description" content="Live prayer times and countdown for all districts in Sri Lanka.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../app_icon.png" type="image/png">
+
+    <style>
+        /* === Design Tokens === */
+        :root {
+            --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+
+            /* Light Mode */
+            --bg-primary: #f0f5f1;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --bg-prayer-item: #f0f5f1;
+            --bg-prayer-active: #ecfdf5;
+            --bg-selector: #f0f5f1;
+            --border-card: rgba(5, 150, 105, 0.08);
+            --border-prayer-active: #a7f3d0;
+            --border-selector: #d1fae5;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --text-faint: #94a3b8;
+            --accent-primary: #059669;
+            --accent-secondary: #047857;
+            --accent-light: #d1fae5;
+            --accent-glow: rgba(16, 185, 129, 0.12);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+            --shadow-glow: 0 0 60px rgba(16, 185, 129, 0.1);
+            --gradient-bg: radial-gradient(ellipse 100% 80% at 50% -30%, rgba(16, 185, 129, 0.1), transparent 70%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0c1a12;
+            --bg-secondary: #111b14;
+            --bg-card: rgba(20, 40, 28, 0.7);
+            --bg-card-hover: rgba(20, 40, 28, 0.85);
+            --bg-prayer-item: rgba(16, 35, 24, 0.6);
+            --bg-prayer-active: rgba(5, 150, 105, 0.12);
+            --bg-selector: rgba(16, 35, 24, 0.8);
+            --border-card: rgba(16, 185, 129, 0.1);
+            --border-prayer-active: rgba(16, 185, 129, 0.3);
+            --border-selector: rgba(16, 185, 129, 0.15);
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-faint: #64748b;
+            --accent-primary: #34d399;
+            --accent-secondary: #10b981;
+            --accent-light: rgba(16, 185, 129, 0.15);
+            --accent-glow: rgba(16, 185, 129, 0.08);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 80px rgba(16, 185, 129, 0.06);
+            --gradient-bg: radial-gradient(ellipse 100% 80% at 50% -30%, rgba(16, 185, 129, 0.06), transparent 70%);
+        }
+
+        /* === Reset === */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* === Background Glow === */
+        .bg-glow {
+            position: fixed;
+            inset: 0;
+            background: var(--gradient-bg);
+            pointer-events: none;
+            z-index: 0;
+            transition: background 0.4s ease;
+        }
+
+        /* === Layout === */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 20px;
+        }
+
+        /* === Top Bar === */
+        .top-bar {
+            width: 100%;
+            max-width: 720px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            backdrop-filter: blur(12px);
+            transition: all 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            transition: all 0.25s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+
+        /* === Header === */
+        .page-header {
+            text-align: center;
+            margin-bottom: 36px;
+            max-width: 720px;
+        }
+
+        .page-header .icon-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .page-header .icon-row i {
+            font-size: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .page-header .icon-row span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-primary);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        /* === Main Card === */
+        .prayer-main-card {
+            width: 100%;
+            max-width: 720px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 28px;
+            padding: 36px;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        /* === Card Header === */
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .district-picker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-selector);
+            padding: 8px 18px 8px 14px;
+            border-radius: 100px;
+            border: 1px solid var(--border-selector);
+            transition: all 0.25s ease;
+        }
+
+        .district-picker:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .district-picker i {
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+        }
+
+        .district-picker select {
+            background: transparent;
+            border: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.925rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            padding-right: 4px;
+        }
+
+        .date-display {
+            font-size: 0.825rem;
+            font-weight: 500;
+            color: var(--text-faint);
+        }
+
+        /* === Countdown Hero === */
+        .countdown-hero {
+            text-align: center;
+            padding: 24px 0 40px;
+        }
+
+        .countdown-hero .next-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent-primary);
+            margin-bottom: 14px;
+        }
+
+        .countdown-hero .next-label i {
+            font-size: 0.85rem;
+        }
+
+        .countdown-hero .prayer-name {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .countdown-hero .prayer-exact-time {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .countdown-hero .prayer-exact-time i {
+            margin-right: 4px;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-segment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .timer-segment .value {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            background: var(--bg-prayer-item);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-variant-numeric: tabular-nums;
+            transition: background 0.25s ease;
+        }
+
+        .timer-segment .unit {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-faint);
+        }
+
+        .timer-colon {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-faint);
+            padding-bottom: 22px;
+        }
+
+        /* === Prayer Grid === */
+        .prayer-times-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .prayer-slot {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 20px 12px;
+            background: var(--bg-prayer-item);
+            border-radius: 18px;
+            border: 1.5px solid transparent;
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+        }
+
+        .prayer-slot .slot-icon {
+            font-size: 1.1rem;
+            color: var(--text-faint);
+            margin-bottom: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .prayer-slot .slot-name {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-faint);
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .prayer-slot .slot-time {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .prayer-slot.active {
+            background: var(--bg-prayer-active);
+            border-color: var(--border-prayer-active);
+        }
+
+        .prayer-slot.active .slot-icon,
+        .prayer-slot.active .slot-name {
+            color: var(--accent-primary);
+        }
+
+        .prayer-slot.active .slot-time {
+            color: var(--accent-secondary);
+        }
+
+        .prayer-slot.passed {
+            opacity: 0.45;
+        }
+
+        /* === Footer === */
+        .page-footer {
+            text-align: center;
+            padding: 24px 0 16px;
+            max-width: 720px;
+            width: 100%;
+        }
+
+        .page-footer p {
+            font-size: 0.8rem;
+            color: var(--text-faint);
+        }
+
+        .page-footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 640px) {
+            .page-wrapper {
+                padding: 16px 14px;
+            }
+
+            .prayer-main-card {
+                padding: 24px 18px;
+                border-radius: 22px;
+            }
+
+            .prayer-times-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .card-top {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .timer-segment .value {
+                width: 64px;
+                height: 64px;
+                font-size: 1.6rem;
+                border-radius: 14px;
+            }
+
+            .timer-colon {
+                font-size: 1.5rem;
+                padding-bottom: 18px;
+            }
+
+            .countdown-hero .prayer-name {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .prayer-times-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .timer-segment .value {
+                width: 56px;
+                height: 56px;
+                font-size: 1.4rem;
+            }
+        }
+
+        /* === Transitions === */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* === Fade In Animation === */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in-d1 {
+            animation-delay: 0.05s;
+        }
+
+        .fade-in-d2 {
+            animation-delay: 0.12s;
+        }
+
+        .fade-in-d3 {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="page-wrapper">
+        <!-- Top Bar -->
+        <div class="top-bar fade-in">
+            <a href="../" class="back-link">
+                <i class="ri-arrow-left-s-line"></i> Back to App
+            </a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <i class="ri-moon-line" id="theme-icon"></i>
+            </button>
+        </div>
+
+        <!-- Header -->
+        <header class="page-header fade-in fade-in-d1">
+            <div class="icon-row">
+                <i class="ri-moon-clear-fill"></i>
+                <span>Sri Lanka Prayer Times</span>
+            </div>
+            <h1>Today's Prayer Times</h1>
+            <p>Accurate prayer times for all districts across Sri Lanka</p>
+        </header>
+
+        <!-- Main Card -->
+        <main class="prayer-main-card fade-in fade-in-d2">
+            <!-- Top Section -->
+            <div class="card-top">
+                <div class="district-picker">
+                    <i class="ri-map-pin-2-fill"></i>
+                    <select id="district-select" aria-label="Select District">
+                        <option value="colombo">Colombo</option>
+                        <option value="kandy">Kandy</option>
+                        <option value="galle">Galle</option>
+                        <option value="jaffna">Jaffna</option>
+                        <option value="gampaha">Gampaha</option>
+                        <option value="kalutara">Kalutara</option>
+                        <option value="matale">Matale</option>
+                        <option value="nuwara-eliya">Nuwara Eliya</option>
+                        <option value="matara">Matara</option>
+                        <option value="hambantota">Hambantota</option>
+                        <option value="mannar">Mannar</option>
+                        <option value="vavuniya">Vavuniya</option>
+                        <option value="mullaittivu">Mullaittivu</option>
+                        <option value="batticaloa">Batticaloa</option>
+                        <option value="ampara">Ampara</option>
+                        <option value="trincomalee">Trincomalee</option>
+                        <option value="kurunegala">Kurunegala</option>
+                        <option value="puttalam">Puttalam</option>
+                        <option value="anuradhapura">Anuradhapura</option>
+                        <option value="polonnaruwa">Polonnaruwa</option>
+                        <option value="badulla">Badulla</option>
+                        <option value="moneragala">Moneragala</option>
+                        <option value="ratnapura">Ratnapura</option>
+                        <option value="kegalle">Kegalle</option>
+                        <option value="kilinochchi">Kilinochchi</option>
+                    </select>
+                </div>
+                <div class="date-display" id="display-date">Loading...</div>
+            </div>
+
+            <!-- Countdown Hero -->
+            <div class="countdown-hero">
+                <div class="next-label">
+                    <i class="ri-time-line"></i>
+                    <span>Next Prayer</span>
+                </div>
+                <div class="prayer-name" id="next-prayer-name">--</div>
+                <div class="prayer-exact-time" id="next-prayer-time">
+                    <i class="ri-time-fill"></i> --:-- --
+                </div>
+                <div class="countdown-timer">
+                    <div class="timer-segment">
+                        <div class="value" id="cd-hours">00</div>
+                        <div class="unit">Hours</div>
+                    </div>
+                    <div class="timer-colon">:</div>
+                    <div class="timer-segment">
+                        <div class="value" id="cd-minutes">00</div>
+                        <div class="unit">Min</div>
+                    </div>
+                    <div class="timer-colon">:</div>
+                    <div class="timer-segment">
+                        <div class="value" id="cd-seconds">00</div>
+                        <div class="unit">Sec</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prayer Grid -->
+            <div class="prayer-times-grid" id="prayer-grid">
+                <div class="prayer-slot" data-prayer="fajr">
+                    <i class="ri-sparkling-line slot-icon"></i>
+                    <span class="slot-name">Fajr</span>
+                    <span class="slot-time">--:--</span>
+                </div>
+                <div class="prayer-slot" data-prayer="sunrise">
+                    <i class="ri-sun-line slot-icon"></i>
+                    <span class="slot-name">Sunrise</span>
+                    <span class="slot-time">--:--</span>
+                </div>
+                <div class="prayer-slot" data-prayer="dhuhr">
+                    <i class="ri-sun-fill slot-icon"></i>
+                    <span class="slot-name">Dhuhr</span>
+                    <span class="slot-time">--:--</span>
+                </div>
+                <div class="prayer-slot" data-prayer="asr">
+                    <i class="ri-sun-foggy-line slot-icon"></i>
+                    <span class="slot-name">Asr</span>
+                    <span class="slot-time">--:--</span>
+                </div>
+                <div class="prayer-slot" data-prayer="maghrib">
+                    <i class="ri-sun-cloudy-line slot-icon"></i>
+                    <span class="slot-name">Maghrib</span>
+                    <span class="slot-time">--:--</span>
+                </div>
+                <div class="prayer-slot" data-prayer="isha">
+                    <i class="ri-moon-fill slot-icon"></i>
+                    <span class="slot-name">Isha</span>
+                    <span class="slot-time">--:--</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="page-footer fade-in fade-in-d3">
+            <p>Powered by <a href="../">SL Prayer Times</a> &middot; Data sourced for accuracy</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                icon.className = 'ri-moon-line';
+                localStorage.setItem('prayer-theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                icon.className = 'ri-sun-line';
+                localStorage.setItem('prayer-theme', 'dark');
+            }
+        }
+
+        // Restore theme
+        (function () {
+            const saved = localStorage.getItem('prayer-theme');
+            if (saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').className = 'ri-sun-line';
+            }
+        })();
+
+        // Prayer Times
+        let prayerData = null;
+        let tickInterval = null;
+
+        async function init() {
+            try {
+                const res = await fetch('../prayer_data.json');
+                prayerData = await res.json();
+
+                const select = document.getElementById('district-select');
+                // Restore saved district
+                const savedDistrict = localStorage.getItem('prayer-district');
+                if (savedDistrict) select.value = savedDistrict;
+
+                select.addEventListener('change', () => {
+                    localStorage.setItem('prayer-district', select.value);
+                    render();
+                });
+
+                render();
+                startTick();
+            } catch (e) {
+                console.error('Failed to load prayer data:', e);
+            }
+        }
+
+        function parseTime(str) {
+            const now = new Date();
+            const [time, mod] = str.split(' ');
+            let [h, m] = time.split(':').map(Number);
+            if (h === 12) h = 0;
+            if (mod === 'PM') h += 12;
+            const d = new Date(now);
+            d.setHours(h, m, 0, 0);
+            return d;
+        }
+
+        function render() {
+            if (!prayerData) return;
+            const id = document.getElementById('district-select').value;
+            const district = prayerData.districts.find(d => d.id === id);
+            if (!district) return;
+
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            const times = district.prayer_times?.[month]?.[day];
+            if (!times) return;
+
+            // Update date
+            const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('display-date').textContent = now.toLocaleDateString('en-LK', opts);
+
+            // Update grid
+            const prayerIcons = {
+                fajr: 'ri-sparkling-line',
+                sunrise: 'ri-sun-line',
+                dhuhr: 'ri-sun-fill',
+                asr: 'ri-sun-foggy-line',
+                maghrib: 'ri-sun-cloudy-line',
+                isha: 'ri-moon-fill'
+            };
+
+            for (const [key, val] of Object.entries(times)) {
+                const slot = document.querySelector(`.prayer-slot[data-prayer="${key}"]`);
+                if (slot) {
+                    slot.querySelector('.slot-time').textContent = val;
+                }
+            }
+
+            updateNext(times);
+        }
+
+        function updateNext(times) {
+            const now = new Date();
+            const order = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+            let next = null;
+            let nextTime = null;
+
+            for (const p of order) {
+                const t = parseTime(times[p]);
+                if (t > now) {
+                    next = p;
+                    nextTime = t;
+                    break;
+                }
+            }
+
+            if (!next) {
+                next = 'fajr';
+                nextTime = parseTime(times['fajr']);
+                nextTime.setDate(nextTime.getDate() + 1);
+            }
+
+            // Update name
+            document.getElementById('next-prayer-name').textContent =
+                next.charAt(0).toUpperCase() + next.slice(1);
+
+            // Update exact time
+            document.getElementById('next-prayer-time').innerHTML =
+                `<i class="ri-time-fill"></i> ${times[next]}`;
+
+            // Active state and passed state
+            document.querySelectorAll('.prayer-slot').forEach(el => {
+                el.classList.remove('active', 'passed');
+            });
+
+            const activeSlot = document.querySelector(`.prayer-slot[data-prayer="${next}"]`);
+            if (activeSlot) activeSlot.classList.add('active');
+
+            // Mark passed prayers
+            for (const p of order) {
+                const t = parseTime(times[p]);
+                if (t <= now && p !== next) {
+                    const slot = document.querySelector(`.prayer-slot[data-prayer="${p}"]`);
+                    if (slot) slot.classList.add('passed');
+                }
+            }
+            // Also mark sunrise as passed if applicable
+            const sunriseTime = parseTime(times['sunrise']);
+            const sunriseSlot = document.querySelector('.prayer-slot[data-prayer="sunrise"]');
+            if (sunriseTime <= now && sunriseSlot) sunriseSlot.classList.add('passed');
+
+            updateCountdown(nextTime);
+        }
+
+        function updateCountdown(target) {
+            const now = new Date();
+            let diff = target - now;
+            if (diff <= 0) { render(); return; }
+
+            const h = Math.floor(diff / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+
+            document.getElementById('cd-hours').textContent = h.toString().padStart(2, '0');
+            document.getElementById('cd-minutes').textContent = m.toString().padStart(2, '0');
+            document.getElementById('cd-seconds').textContent = s.toString().padStart(2, '0');
+        }
+
+        function startTick() {
+            if (tickInterval) clearInterval(tickInterval);
+            tickInterval = setInterval(() => {
+                const id = document.getElementById('district-select').value;
+                const district = prayerData?.districts.find(d => d.id === id);
+                if (!district) return;
+                const now = new Date();
+                const times = district.prayer_times?.[now.getMonth() + 1]?.[now.getDate()];
+                if (times) updateNext(times);
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

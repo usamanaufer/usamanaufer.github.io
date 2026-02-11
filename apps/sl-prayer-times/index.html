@@ -80,11 +80,13 @@
                 </p>
 
                 <div class="download-group fade-up delay-4">
-                    <a href="#" class="btn-download" aria-label="Download on App Store">
+                    <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
+                        class="btn-download" aria-label="Download on App Store">
                         <i class="ri-apple-fill" aria-hidden="true"></i>
                         App Store
                     </a>
-                    <a href="#" class="btn-download" aria-label="Get it on Google Play">
+                    <a href="javascript:void(0)" onclick="showToast()" class="btn-download"
+                        aria-label="Get it on Google Play">
                         <i class="ri-google-play-fill" aria-hidden="true"></i>
                         Google Play
                     </a>
@@ -104,6 +106,77 @@
                     <div class="phone phone-side">
                         <img src="./screenshot_calendar.png" alt="Islamic calendar" loading="lazy" width="280"
                             height="571">
+                    </div>
+                </div>
+            </section>
+            <!-- Live Prayer Times -->
+            <section id="prayer-times" class="prayer-times fade-up delay-2" aria-labelledby="prayer-times-heading">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <div class="district-selector">
+                            <i class="ri-map-pin-2-fill" aria-hidden="true"></i>
+                            <select id="district-select" aria-label="Select District">
+                                <option value="colombo">Colombo</option>
+                                <option value="kandy">Kandy</option>
+                                <option value="galle">Galle</option>
+                                <option value="jaffna">Jaffna</option>
+                                <option value="gampaha">Gampaha</option>
+                                <option value="kalutara">Kalutara</option>
+                                <option value="matale">Matale</option>
+                                <option value="nuwara-eliya">Nuwara Eliya</option>
+                                <option value="matara">Matara</option>
+                                <option value="hambantota">Hambantota</option>
+                                <option value="mannar">Mannar</option>
+                                <option value="vavuniya">Vavuniya</option>
+                                <option value="mullaittivu">Mullaittivu</option>
+                                <option value="batticaloa">Batticaloa</option>
+                                <option value="ampara">Ampara</option>
+                                <option value="trincomalee">Trincomalee</option>
+                                <option value="kurunegala">Kurunegala</option>
+                                <option value="puttalam">Puttalam</option>
+                                <option value="anuradhapura">Anuradhapura</option>
+                                <option value="polonnaruwa">Polonnaruwa</option>
+                                <option value="badulla">Badulla</option>
+                                <option value="moneragala">Moneragala</option>
+                                <option value="ratnapura">Ratnapura</option>
+                                <option value="kegalle">Kegalle</option>
+                                <option value="kilinochchi">Kilinochchi</option>
+                            </select>
+                        </div>
+                        <div class="current-date" id="display-date">Loading...</div>
+                    </div>
+
+                    <div class="next-prayer-highlight">
+                        <span class="label">Next Prayer</span>
+                        <h2 id="next-prayer-name">--:--</h2>
+                        <div class="countdown" id="prayer-countdown">--:--:--</div>
+                    </div>
+
+                    <div class="prayer-grid" id="prayer-grid">
+                        <div class="prayer-item" data-prayer="fajr">
+                            <span class="p-name">Fajr</span>
+                            <span class="p-time">--:--</span>
+                        </div>
+                        <div class="prayer-item" data-prayer="sunrise">
+                            <span class="p-name">Sunrise</span>
+                            <span class="p-time">--:--</span>
+                        </div>
+                        <div class="prayer-item" data-prayer="dhuhr">
+                            <span class="p-name">Dhuhr</span>
+                            <span class="p-time">--:--</span>
+                        </div>
+                        <div class="prayer-item" data-prayer="asr">
+                            <span class="p-name">Asr</span>
+                            <span class="p-time">--:--</span>
+                        </div>
+                        <div class="prayer-item" data-prayer="maghrib">
+                            <span class="p-name">Maghrib</span>
+                            <span class="p-time">--:--</span>
+                        </div>
+                        <div class="prayer-item" data-prayer="isha">
+                            <span class="p-name">Isha</span>
+                            <span class="p-time">--:--</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -152,6 +225,18 @@
                         <p>Local storage ensures the app works without internet.</p>
                     </article>
                 </div>
+
+                <!-- Beta Testing CTA -->
+                <div class="beta-cta fade-up delay-4">
+                    <div class="beta-cta-content">
+                        <div class="beta-cta-badge">Android Users</div>
+                        <h3>Beta Testing in Progress</h3>
+                        <p>Our beta testing is currently underway. Check the status page for more information on the
+                            upcoming Play Store release.</p>
+                        <a href="./beta/index.html" class="btn-beta">Check Status <i
+                                class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
             </section>
 
             <!-- Widget Section -->
@@ -188,10 +273,12 @@
                     <h2 id="cta-heading">Download Free</h2>
                     <p>Join thousands of Sri Lankan Muslims using this app daily.</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn-cta" aria-label="Download on App Store">
+                        <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
+                            class="btn-download" aria-label="Download on App Store">
                             <i class="ri-apple-fill" aria-hidden="true"></i> App Store
                         </a>
-                        <a href="#" class="btn-cta" aria-label="Get it on Google Play">
+                        <a href="javascript:void(0)" onclick="showToast()" class="btn-cta"
+                            aria-label="Get it on Google Play">
                             <i class="ri-google-play-fill" aria-hidden="true"></i> Google Play
                         </a>
                     </div>
@@ -203,12 +290,158 @@
         <footer class="footer">
             <nav class="footer-links" aria-label="Footer">
                 <a href="./privacy/">Privacy Policy</a>
-                <a href="mailto:contact@usamanaufer.com">Support</a>
+                <a href="mailto:contact@usamanaufer.online">Support</a>
                 <a href="../../">More Apps</a>
             </nav>
             <p class="footer-copy">© 2026 Usama. Made for Sri Lanka 🇱🇰</p>
         </footer>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="alert" aria-live="polite">
+        <i class="ri-information-fill"></i>
+        <span>Coming soon. <a href="./beta/index.html"
+                style="color: var(--emerald-400); text-decoration: underline;">Check
+                Status</a></span>
+    </div>
+
+    <script>
+        let prayerData = null;
+        let timerInterval = null;
+
+        async function initPrayerTimes() {
+            try {
+                const response = await fetch('./prayer_data.json');
+                prayerData = await response.json();
+
+                const districtSelect = document.getElementById('district-select');
+                districtSelect.addEventListener('change', () => updateUI());
+
+                // Set default district to Colombo if not stored
+                if (!districtSelect.value) districtSelect.value = 'colombo';
+
+                updateUI();
+                startTimer();
+            } catch (error) {
+                console.error('Error loading prayer data:', error);
+            }
+        }
+
+        function updateUI() {
+            if (!prayerData) return;
+
+            const districtId = document.getElementById('district-select').value;
+            const district = prayerData.districts.find(d => d.id === districtId);
+            if (!district) return;
+
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+
+            const times = district.prayer_times[month][day];
+            if (!times) return;
+
+            // Update Grid
+            for (const [id, time] of Object.entries(times)) {
+                const item = document.querySelector(`.prayer-item[data-prayer="${id}"]`);
+                if (item) {
+                    item.querySelector('.p-time').textContent = time;
+                }
+            }
+
+            // Update Date Display
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('display-date').textContent = now.toLocaleDateString('en-LK', options);
+
+            updateNextPrayer(times);
+        }
+
+        function parseTime(timeStr) {
+            const now = new Date();
+            const [time, modifier] = timeStr.split(' ');
+            let [hours, minutes] = time.split(':');
+
+            if (hours === '12') hours = '00';
+            if (modifier === 'PM') hours = parseInt(hours, 10) + 12;
+
+            const timeDate = new Date(now.getTime());
+            timeDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0, 0);
+            return timeDate;
+        }
+
+        function updateNextPrayer(times) {
+            const now = new Date();
+            const prayerOrder = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+            let nextPrayer = null;
+            let nextPrayerTime = null;
+
+            for (const p of prayerOrder) {
+                const pTime = parseTime(times[p]);
+                if (pTime > now) {
+                    nextPrayer = p;
+                    nextPrayerTime = pTime;
+                    break;
+                }
+            }
+
+            // Handle case after Isha (Next prayer is Fajr tomorrow)
+            if (!nextPrayer) {
+                nextPrayer = 'fajr';
+                // Simplified for the demo, would actually need tomorrow's times
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                nextPrayerTime = parseTime(times['fajr']);
+                nextPrayerTime.setDate(nextPrayerTime.getDate() + 1);
+            }
+
+            document.getElementById('next-prayer-name').textContent = nextPrayer.charAt(0).toUpperCase() + nextPrayer.slice(1);
+
+            // Update Active Class in Grid
+            document.querySelectorAll('.prayer-item').forEach(el => el.classList.remove('active'));
+            const activeItem = document.querySelector(`.prayer-item[data-prayer="${nextPrayer}"]`);
+            if (activeItem) activeItem.classList.add('active');
+
+            updateCountdown(nextPrayerTime);
+        }
+
+        function updateCountdown(targetTime) {
+            const now = new Date();
+            const diff = targetTime - now;
+
+            if (diff <= 0) {
+                updateUI();
+                return;
+            }
+
+            const h = Math.floor(diff / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+
+            document.getElementById('prayer-countdown').textContent =
+                `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                const districtId = document.getElementById('district-select').value;
+                const district = prayerData.districts.find(d => d.id === districtId);
+                const now = new Date();
+                const times = district.prayer_times[now.getMonth() + 1][now.getDate()];
+                updateNextPrayer(times);
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', initPrayerTimes);
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
 </body>
 
 </html>

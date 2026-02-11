@@ -347,6 +347,75 @@ body {
     line-height: 1.6;
 }
 
+.beta-cta {
+    margin-top: var(--space-12);
+    background: var(--slate-900);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.beta-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 60%);
+    pointer-events: none;
+}
+
+.beta-cta-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: var(--emerald-400);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+}
+
+.beta-cta h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+}
+
+.beta-cta p {
+    color: var(--slate-400);
+    margin-bottom: var(--space-6);
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-beta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    background: var(--emerald-500);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: var(--transition-smooth);
+}
+
+.btn-beta:hover {
+    background: var(--emerald-600);
+    transform: translateX(4px);
+}
+
 /* === Widget Section === */
 .widget-section {
     padding: var(--space-16) 0;
@@ -655,5 +724,190 @@ body {
     *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* === Toast Notification === */
+.toast {
+    position: fixed;
+    bottom: var(--space-8);
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--slate-900);
+    color: var(--white);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-xl);
+    z-index: 1000;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast i {
+    color: var(--emerald-400);
+}
+
+/* Prayer Times Section */
+.prayer-times {
+    padding: var(--space-20) 0;
+    margin-top: -3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.prayer-card {
+    background: var(--white);
+    border-radius: var(--radius-3xl);
+    padding: var(--space-8);
+    border: 1px solid var(--slate-100);
+    box-shadow: var(--shadow-2xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.prayer-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--slate-50);
+}
+
+.district-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--slate-50);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--slate-100);
+}
+
+.district-selector i {
+    color: var(--emerald-600);
+    font-size: 1.25rem;
+}
+
+.district-selector select {
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--slate-900);
+    cursor: pointer;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.current-date {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--slate-500);
+}
+
+.next-prayer-highlight {
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.next-prayer-highlight .label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--emerald-600);
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.next-prayer-highlight h2 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--slate-900);
+    margin-bottom: var(--space-2);
+}
+
+.next-prayer-highlight .countdown {
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--slate-400);
+}
+
+.prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+}
+
+.prayer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-6);
+    background: var(--slate-50);
+    border-radius: var(--radius-2xl);
+    border: 1px solid transparent;
+    transition: var(--transition-base);
+}
+
+.prayer-item .p-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--slate-400);
+    margin-bottom: var(--space-1);
+}
+
+.prayer-item .p-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--slate-900);
+}
+
+.prayer-item.active {
+    background: var(--emerald-50);
+    border-color: var(--emerald-200);
+}
+
+.prayer-item.active .p-name {
+    color: var(--emerald-600);
+}
+
+.prayer-item.active .p-time {
+    color: var(--emerald-900);
+}
+
+@media (max-width: 640px) {
+    .prayer-card {
+        padding: var(--space-6);
+    }
+
+    .prayer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .prayer-card-header {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+    }
+
+    .next-prayer-highlight h2 {
+        font-size: 2.5rem;
     }
 }

@@ -86,6 +86,33 @@
         .footer-links a:hover {
             color: var(--text-primary);
         }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(255, 94, 98, 0.08);
+            color: #ff5e62;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 94, 98, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -104,20 +131,15 @@
             <p class="app-tagline">Scan barcodes to instantly check the halal status of food products. Fast, reliable,
                 and easy to use.</p>
 
-            <div class="download-buttons">
-                <a href="#" class="btn-download">
-                    <i class="ri-apple-fill"></i> App Store
-                </a>
-                <a href="#" class="btn-download">
-                    <i class="ri-google-play-fill"></i> Google Play
-                </a>
+            <div class="coming-soon-badge">
+                <i class="ri-time-line"></i> Coming Soon
             </div>
         </section>
 
         <footer class="fade-in delay-2">
             <div class="footer-links">
                 <a href="./privacy/">Privacy Policy</a>
-                <a href="mailto:contact@usamanaufer.com">Support</a>
+                <a href="mailto:contact@usamanaufer.online">Support</a>
                 <a href="../../">Terms of Service</a>
             </div>
             <p style="margin-top: 2rem; color: var(--text-secondary); text-align: center;">&copy; 2026 Usama. All rights
