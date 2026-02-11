@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://usamanaufer.online/sitemap.xml
+Sitemap: https://usamanaufer.online/apps/sl-prayer-times/sitemap.xml
