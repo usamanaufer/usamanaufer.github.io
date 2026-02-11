@@ -955,6 +955,283 @@
                 max-height: 85vh;
             }
         }
+
+        /* === Support Section === */
+        .support-mission {
+            padding: 60px 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .support-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 28px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(20px);
+        }
+
+        .support-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .support-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ef4444;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .support-card h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .support-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .support-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-item {
+            padding: 12px;
+            background: var(--bg-prayer-item);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 2px;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-faint);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .support-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-support {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--text-primary);
+            color: var(--bg-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-support:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .btn-support-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--bg-selector);
+            color: var(--text-primary);
+            border: 1px solid var(--border-selector);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-support-alt:hover {
+            opacity: 0.8;
+        }
+
+        .support-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .heart-glow {
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15), transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .heart-glow i {
+            font-size: 5rem;
+            color: #ef4444;
+            filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.4));
+            animation: heartPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes heartPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .support-card {
+                grid-template-columns: 1fr;
+                padding: 32px 24px;
+                text-align: center;
+            }
+
+            .support-visual {
+                order: -1;
+            }
+
+            .support-links {
+                justify-content: center;
+            }
+        }
+
+        /* Mission Modal Specifics */
+        .mission-modal-card {
+            max-width: 480px;
+            padding: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .mission-content {
+            padding: 32px 24px 40px;
+        }
+
+        .mission-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .heart-glow-small {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1), transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .heart-glow-small i {
+            font-size: 2.5rem;
+            color: #ef4444;
+            animation: heartPulse 2s infinite ease-in-out;
+        }
+
+        .mission-text {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .mission-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+            background: var(--bg-prayer-item);
+            border-radius: 16px;
+            border: 1px solid var(--border-card);
+        }
+
+        .mission-item i {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+        }
+
+        .mission-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .mission-subtext {
+            font-size: 0.9rem;
+            color: var(--text-faint);
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .btn-link-subtle {
+            background: none;
+            border: none;
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 8px;
+            transition: color 0.2s;
+        }
+
+        .btn-link-subtle:hover {
+            color: var(--accent-primary);
+        }
     </style>
 </head>
 
@@ -971,9 +1248,16 @@
                 <span class="sep">/</span>
                 <span class="curr">Live</span>
             </nav>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                <i class="ri-moon-line" id="theme-icon"></i>
-            </button>
+            <div class="top-actions" style="display: flex; gap: 8px;">
+                <button class="theme-toggle" onclick="openMissionModal()" aria-label="About Our Mission"
+                    style="width: auto; padding-left: 12px; padding-right: 12px; gap: 6px;">
+                    <i class="ri-heart-line"></i>
+                    <span style="font-size: 0.9rem; font-weight: 500;">Mission</span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                    <i class="ri-moon-line" id="theme-icon"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Header -->
@@ -1063,7 +1347,7 @@
         <!-- App Banner -->
         <div class="app-banner fade-in fade-in-d3">
             <div class="banner-info">
-                <img src="/apps/sl-prayer-times/app-icon.png" alt="App Icon" class="app-icon-mini">
+                <img src="../app-icon.png" alt="App Icon" class="app-icon-mini">
                 <div class="banner-text">
                     <h3>Download the App</h3>
                     <p>Get accurate Athan alerts & widgets on your phone</p>
@@ -1080,10 +1364,68 @@
             </div>
         </div>
 
+
         <!-- Footer -->
         <footer class="page-footer fade-in fade-in-d3">
             <p>Built by <b>TeaPodu</b> for all Sri Lankans</p>
+            <button class="btn-link-subtle" onclick="openMissionModal()">About Our Mission</button>
         </footer>
+    </div>
+
+    </div>
+
+    <!-- Mission Modal -->
+    <div id="mission-modal" class="modal-backdrop" aria-hidden="true"
+        onclick="if(event.target === this) closeMissionModal()">
+        <div class="modal-card mission-modal-card">
+            <div class="modal-header">
+                <h2>About Our Mission</h2>
+                <button class="btn-close" onclick="closeMissionModal()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="mission-content">
+                <div class="mission-icon">
+                    <div class="heart-glow-small">
+                        <i class="ri-heart-3-fill"></i>
+                    </div>
+                </div>
+                <p class="mission-text">
+                    <b>SL Prayer Times</b> is a labor of love, built to provide the most accurate spiritual tools for
+                    every Sri Lankan.
+                </p>
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <i class="ri-user-line"></i>
+                        <span>Solo Developer</span>
+                    </div>
+                    <div class="mission-item">
+                        <i class="ri-advertisement-line"></i>
+                        <span>Zero Ads</span>
+                    </div>
+                    <div class="mission-item">
+                        <i class="ri-book-open-line"></i>
+                        <span>ACJU Sourced</span>
+                    </div>
+                    <div class="mission-item">
+                        <i class="ri-shield-check-line"></i>
+                        <span>Privacy Focused</span>
+                    </div>
+                    <div class="mission-item">
+                        <i class="ri-flag-line"></i>
+                        <span>Made in Lanka</span>
+                    </div>
+                    <div class="mission-item">
+                        <i class="ri-money-dollar-circle-line"></i>
+                        <span>100% Free</span>
+                    </div>
+                </div>
+                <p class="mission-subtext">
+                    We are committed to keeping this experience premium, clean, and accessible to everyone. Thank you
+                    for being part of our community.
+                </p>
+            </div>
+        </div>
     </div>
 
     <!-- District Picker Modal -->
@@ -1277,15 +1619,25 @@
             sEl.textContent = s.toString().padStart(2, '0');
         }
 
+        let lastRenderDate = new Date().getDate();
+
         function startTick() {
             if (tickInterval) clearInterval(tickInterval);
             tickInterval = setInterval(() => {
                 if (!prayerData) return;
 
+                const now = new Date();
+                const currentDate = now.getDate();
+
+                // Check for day change (Midnight update)
+                if (currentDate !== lastRenderDate) {
+                    lastRenderDate = currentDate;
+                    render(); // Full re-render of grid and date
+                }
+
                 const id = currentDistrictId;
                 const district = prayerData.districts.find(d => d.id === id);
                 if (district) {
-                    const now = new Date();
                     const times = district.prayer_times?.[now.getMonth() + 1]?.[now.getDate()];
                     if (times) updateNext(times);
                 }
@@ -1402,6 +1754,31 @@
             updateSEO();
             startTick();
         }
+
+        // Mission Modal
+        function openMissionModal() {
+            const modal = document.getElementById('mission-modal');
+            if (modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMissionModal() {
+            const modal = document.getElementById('mission-modal');
+            if (modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal(); // District modal
+                closeMissionModal(); // Mission modal
+            }
+        });
 
         document.addEventListener('DOMContentLoaded', init);
     </script>
