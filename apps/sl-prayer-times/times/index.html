@@ -792,6 +792,144 @@
             color: var(--accent-primary);
         }
 
+
+        /* === Modal === */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--bg-card);
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px;
+            border: 1px solid var(--border-card);
+            box-shadow: var(--shadow-elevated);
+            transform: scale(0.95) translateY(10px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            max-height: 80vh;
+        }
+
+        .modal-backdrop.open .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .modal-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .btn-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            display: flex;
+        }
+
+        .btn-close:hover {
+            color: var(--text-primary);
+            background: var(--bg-selector);
+        }
+
+        .modal-search {
+            padding: 16px 24px;
+            position: relative;
+        }
+
+        .modal-search i {
+            position: absolute;
+            left: 38px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .modal-search input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border-radius: 14px;
+            border: 1px solid var(--border-selector);
+            background: var(--bg-selector);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .modal-search input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .district-list {
+            overflow-y: auto;
+            padding: 0 16px 16px;
+            flex-grow: 1;
+        }
+
+        .district-item {
+            padding: 14px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .district-item:hover {
+            background: var(--bg-prayer-item);
+        }
+
+        .district-item.selected {
+            background: var(--bg-prayer-active);
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .district-item.selected::after {
+            content: '\eb7b';
+            /* ri-check-line */
+            font-family: 'remixicon';
+            font-size: 1.1rem;
+        }
+
         @media (max-width: 640px) {
             .app-banner {
                 flex-direction: column;
@@ -803,6 +941,18 @@
             .app-banner .banner-info {
                 flex-direction: column;
                 gap: 12px;
+            }
+
+            .modal-backdrop {
+                align-items: flex-end;
+                padding: 0;
+            }
+
+            .modal-card {
+                max-width: 100%;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                max-height: 85vh;
             }
         }
     </style>
@@ -840,128 +990,124 @@
         <main class="prayer-main-card fade-in fade-in-d2">
             <!-- Top Section -->
             <div class="card-top">
-                <div class="district-picker">
+                <div class="district-picker" onclick="openModal()" role="button" tabindex="0">
                     <i class="ri-map-pin-2-fill"></i>
-                    <select id="district-select" aria-label="Select District">
-                        <option value="colombo">Colombo</option>
-                        <option value="kandy">Kandy</option>
-                        <option value="galle">Galle</option>
-                        <option value="jaffna">Jaffna</option>
-                        <option value="gampaha">Gampaha</option>
-                        <option value="kalutara">Kalutara</option>
-                        <option value="matale">Matale</option>
-                        <option value="nuwara-eliya">Nuwara Eliya</option>
-                        <option value="matara">Matara</option>
-                        <option value="hambantota">Hambantota</option>
-                        <option value="mannar">Mannar</option>
-                        <option value="vavuniya">Vavuniya</option>
-                        <option value="mullaittivu">Mullaittivu</option>
-                        <option value="batticaloa">Batticaloa</option>
-                        <option value="ampara">Ampara</option>
-                        <option value="trincomalee">Trincomalee</option>
-                        <option value="kurunegala">Kurunegala</option>
-                        <option value="puttalam">Puttalam</option>
-                        <option value="anuradhapura">Anuradhapura</option>
-                        <option value="polonnaruwa">Polonnaruwa</option>
-                        <option value="badulla">Badulla</option>
-                        <option value="moneragala">Moneragala</option>
-                        <option value="ratnapura">Ratnapura</option>
-                        <option value="kegalle">Kegalle</option>
-                        <option value="kilinochchi">Kilinochchi</option>
-                    </select>
+                    <span id="district-label">Select District</span>
+                    <i class="ri-arrow-down-s-line" style="margin-left: auto; font-size: 1.2rem; opacity: 0.6;"></i>
                 </div>
-                <div class="date-display" id="display-date">Loading...</div>
+                <!-- Native select removed -->
             </div>
+            <div class="date-display" id="display-date">Loading...</div>
+    </div>
 
-            <!-- Countdown Hero -->
-            <div class="countdown-hero">
-                <div class="next-label">
-                    <i class="ri-time-line"></i>
-                    <span>Next Prayer</span>
-                </div>
-                <div class="prayer-name" id="next-prayer-name">--</div>
-                <div class="prayer-exact-time" id="next-prayer-time">
-                    <i class="ri-time-fill"></i> --:-- --
-                </div>
-                <div class="countdown-timer">
-                    <div class="timer-segment">
-                        <div class="value" id="cd-hours">00</div>
-                        <div class="unit">Hours</div>
-                    </div>
-                    <div class="timer-colon">:</div>
-                    <div class="timer-segment">
-                        <div class="value" id="cd-minutes">00</div>
-                        <div class="unit">Min</div>
-                    </div>
-                    <div class="timer-colon">:</div>
-                    <div class="timer-segment">
-                        <div class="value" id="cd-seconds">00</div>
-                        <div class="unit">Sec</div>
-                    </div>
-                </div>
+    <!-- Countdown Hero -->
+    <div class="countdown-hero">
+        <div class="next-label">
+            <i class="ri-time-line"></i>
+            <span>Next Prayer</span>
+        </div>
+        <div class="prayer-name" id="next-prayer-name">--</div>
+        <div class="prayer-exact-time" id="next-prayer-time">
+            <i class="ri-time-fill"></i> --:-- --
+        </div>
+        <div class="countdown-timer">
+            <div class="timer-segment">
+                <div class="value" id="cd-hours">00</div>
+                <div class="unit">Hours</div>
             </div>
-
-            <!-- Prayer Grid -->
-            <div class="prayer-times-grid" id="prayer-grid">
-                <div class="prayer-slot" data-prayer="fajr">
-                    <i class="ri-sparkling-line slot-icon"></i>
-                    <span class="slot-name">Fajr</span>
-                    <span class="slot-time">--:--</span>
-                </div>
-                <div class="prayer-slot" data-prayer="sunrise">
-                    <i class="ri-sun-line slot-icon"></i>
-                    <span class="slot-name">Sunrise</span>
-                    <span class="slot-time">--:--</span>
-                </div>
-                <div class="prayer-slot" data-prayer="dhuhr">
-                    <i class="ri-sun-fill slot-icon"></i>
-                    <span class="slot-name">Dhuhr</span>
-                    <span class="slot-time">--:--</span>
-                </div>
-                <div class="prayer-slot" data-prayer="asr">
-                    <i class="ri-sun-foggy-line slot-icon"></i>
-                    <span class="slot-name">Asr</span>
-                    <span class="slot-time">--:--</span>
-                </div>
-                <div class="prayer-slot" data-prayer="maghrib">
-                    <i class="ri-sun-cloudy-line slot-icon"></i>
-                    <span class="slot-name">Maghrib</span>
-                    <span class="slot-time">--:--</span>
-                </div>
-                <div class="prayer-slot" data-prayer="isha">
-                    <i class="ri-moon-fill slot-icon"></i>
-                    <span class="slot-name">Isha</span>
-                    <span class="slot-time">--:--</span>
-                </div>
+            <div class="timer-colon">:</div>
+            <div class="timer-segment">
+                <div class="value" id="cd-minutes">00</div>
+                <div class="unit">Min</div>
             </div>
-        </main>
-
-        <!-- App Banner -->
-        <div class="app-banner fade-in fade-in-d3">
-            <div class="banner-info">
-                <img src="/apps/sl-prayer-times/app-icon.png" alt="App Icon" class="app-icon-mini">
-                <div class="banner-text">
-                    <h3>Download the App</h3>
-                    <p>Get accurate Athan alerts & widgets on your phone</p>
-                </div>
-            </div>
-            <div class="banner-actions">
-                <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
-                    class="btn-mini btn-mini-ios">
-                    <i class="ri-apple-fill"></i> App Store
-                </a>
-                <div class="btn-mini btn-mini-android" onclick="showToast()">
-                    <i class="ri-google-play-fill"></i> Play Store
-                </div>
+            <div class="timer-colon">:</div>
+            <div class="timer-segment">
+                <div class="value" id="cd-seconds">00</div>
+                <div class="unit">Sec</div>
             </div>
         </div>
+    </div>
 
-        <!-- Footer -->
-        <footer class="page-footer fade-in fade-in-d3">
-            <p>Powered by <a href="../">SL Prayer Times</a> &middot; Data sourced for accuracy | Created by
-                <b>TeaPodu</b>
-            </p>
-        </footer>
+    <!-- Prayer Grid -->
+    <div class="prayer-times-grid" id="prayer-grid">
+        <div class="prayer-slot" data-prayer="fajr">
+            <i class="ri-sparkling-line slot-icon"></i>
+            <span class="slot-name">Fajr</span>
+            <span class="slot-time">--:--</span>
+        </div>
+        <div class="prayer-slot" data-prayer="sunrise">
+            <i class="ri-sun-line slot-icon"></i>
+            <span class="slot-name">Sunrise</span>
+            <span class="slot-time">--:--</span>
+        </div>
+        <div class="prayer-slot" data-prayer="dhuhr">
+            <i class="ri-sun-fill slot-icon"></i>
+            <span class="slot-name">Dhuhr</span>
+            <span class="slot-time">--:--</span>
+        </div>
+        <div class="prayer-slot" data-prayer="asr">
+            <i class="ri-sun-foggy-line slot-icon"></i>
+            <span class="slot-name">Asr</span>
+            <span class="slot-time">--:--</span>
+        </div>
+        <div class="prayer-slot" data-prayer="maghrib">
+            <i class="ri-sun-cloudy-line slot-icon"></i>
+            <span class="slot-name">Maghrib</span>
+            <span class="slot-time">--:--</span>
+        </div>
+        <div class="prayer-slot" data-prayer="isha">
+            <i class="ri-moon-fill slot-icon"></i>
+            <span class="slot-name">Isha</span>
+            <span class="slot-time">--:--</span>
+        </div>
+    </div>
+    </main>
+
+    <!-- App Banner -->
+    <div class="app-banner fade-in fade-in-d3">
+        <div class="banner-info">
+            <img src="/apps/sl-prayer-times/app-icon.png" alt="App Icon" class="app-icon-mini">
+            <div class="banner-text">
+                <h3>Download the App</h3>
+                <p>Get accurate Athan alerts & widgets on your phone</p>
+            </div>
+        </div>
+        <div class="banner-actions">
+            <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
+                class="btn-mini btn-mini-ios">
+                <i class="ri-apple-fill"></i> App Store
+            </a>
+            <div class="btn-mini btn-mini-android" onclick="showToast()">
+                <i class="ri-google-play-fill"></i> Play Store
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer fade-in fade-in-d3">
+        <p>Powered by <a href="../">SL Prayer Times</a> &middot; Data sourced for accuracy | Created by
+            <b>TeaPodu</b>
+        </p>
+    </footer>
+    </div>
+
+    <!-- District Picker Modal -->
+    <div id="district-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Select District</h2>
+                <button class="btn-close" onclick="closeModal()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="modal-search">
+                <i class="ri-search-line"></i>
+                <input type="text" id="district-search" placeholder="Search district..." autocomplete="off">
+            </div>
+            <div class="district-list" id="modal-list">
+                <!-- Populated by JS -->
+            </div>
+        </div>
     </div>
 
     <script>
@@ -1029,10 +1175,8 @@
 
         function render() {
             if (!prayerData) return;
-            const ds = document.getElementById('district-select');
-            if (!ds) return;
 
-            const id = ds.value;
+            const id = currentDistrictId;
             const district = prayerData.districts.find(d => d.id === id);
             if (!district) return;
 
@@ -1156,29 +1300,114 @@
         }
 
         function updateSEO() {
-            const ds = document.getElementById('district-select');
-            if (!ds) return;
-            const id = ds.value;
+            const id = currentDistrictId;
             const name = id.charAt(0).toUpperCase() + id.slice(1).replace('-', ' ');
             const now = new Date();
             const dateStr = now.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
             document.title = `${name} Prayer Times Today — ${dateStr} | Live Countdown`;
         }
 
+        // District Picker Logic
+        const districts = [
+            { id: 'colombo', name: 'Colombo' },
+            { id: 'kandy', name: 'Kandy' },
+            { id: 'galle', name: 'Galle' },
+            { id: 'jaffna', name: 'Jaffna' },
+            { id: 'gampaha', name: 'Gampaha' },
+            { id: 'kalutara', name: 'Kalutara' },
+            { id: 'matale', name: 'Matale' },
+            { id: 'nuwara-eliya', name: 'Nuwara Eliya' },
+            { id: 'matara', name: 'Matara' },
+            { id: 'hambantota', name: 'Hambantota' },
+            { id: 'mannar', name: 'Mannar' },
+            { id: 'vavuniya', name: 'Vavuniya' },
+            { id: 'mullaittivu', name: 'Mullaitivu' },
+            { id: 'kilinochchi', name: 'Kilinochchi' },
+            { id: 'batticaloa', name: 'Batticaloa' },
+            { id: 'ampara', name: 'Ampara' },
+            { id: 'trincomalee', name: 'Trincomalee' },
+            { id: 'kurunegala', name: 'Kurunegala' },
+            { id: 'puttalam', name: 'Puttalam' },
+            { id: 'anuradhapura', name: 'Anuradhapura' },
+            { id: 'polonnaruwa', name: 'Polonnaruwa' },
+            { id: 'badulla', name: 'Badulla' },
+            { id: 'monaragala', name: 'Monaragala' },
+            { id: 'ratnapura', name: 'Ratnapura' },
+            { id: 'kegalle', name: 'Kegalle' }
+        ];
+
+        let currentDistrictId = 'colombo';
+
+        function openModal() {
+            const modal = document.getElementById('district-modal');
+            const search = document.getElementById('district-search');
+
+            // Reset search
+            search.value = '';
+            renderDistrictList(districts);
+
+            modal.classList.add('open');
+            setTimeout(() => search.focus(), 100);
+        }
+
+        function closeModal() {
+            document.getElementById('district-modal').classList.remove('open');
+        }
+
+        function renderDistrictList(items) {
+            const list = document.getElementById('modal-list');
+            list.innerHTML = '';
+
+            items.forEach(d => {
+                const item = document.createElement('div');
+                item.className = `district-item ${d.id === currentDistrictId ? 'selected' : ''}`;
+                item.textContent = d.name;
+                item.onclick = () => selectDistrict(d.id);
+                list.appendChild(item);
+            });
+        }
+
+        function selectDistrict(id) {
+            currentDistrictId = id;
+            localStorage.setItem('prayer-district', id);
+
+            // Update UI label
+            const label = document.getElementById('district-label');
+            const d = districts.find(x => x.id === id);
+            if (label && d) label.textContent = d.name;
+
+            closeModal();
+            render();
+            updateSEO();
+        }
+
+        // Search Filter
+        document.getElementById('district-search').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = districts.filter(d => d.name.toLowerCase().includes(term));
+            renderDistrictList(filtered);
+        });
+
+        // Close on backdrop click
+        document.getElementById('district-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'district-modal') closeModal();
+        });
+
         async function init() {
             await fetchPrayerData();
-            const ds = document.getElementById('district-select');
-            if (!ds) return;
+
+            // Set default from localStorage
             const saved = localStorage.getItem('prayer-district');
-            if (saved) ds.value = saved;
+            if (saved) currentDistrictId = saved;
+
+            // Initial render of label
+            const label = document.getElementById('district-label');
+            const d = districts.find(x => x.id === currentDistrictId);
+            if (label && d) label.textContent = d.name;
+
             render();
             updateSEO();
             startTick();
-            ds.addEventListener('change', () => {
-                localStorage.setItem('prayer-district', ds.value);
-                render();
-                updateSEO();
-            });
         }
 
         document.addEventListener('DOMContentLoaded', init);
