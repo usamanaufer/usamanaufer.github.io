@@ -1263,6 +1263,10 @@
                     <i class="ri-heart-line"></i>
                     <span style="font-size: 0.9rem; font-weight: 500;">Mission</span>
                 </button>
+                <button id="pip-btn" class="theme-toggle" onclick="togglePiP()" aria-label="Picture-in-Picture"
+                    style="display: none;">
+                    <i class="ri-external-link-line"></i>
+                </button>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
                     <i class="ri-moon-line" id="theme-icon"></i>
                 </button>
@@ -1481,6 +1485,97 @@
             }
         })();
 
+        // Picture in Picture
+        let pipWindow = null;
+
+        async function togglePiP() {
+            if (!('documentPictureInPicture' in window)) return;
+
+            if (pipWindow) {
+                pipWindow.close();
+                return;
+            }
+
+            try {
+                pipWindow = await window.documentPictureInPicture.requestWindow({
+                    width: 320,
+                    height: 240,
+                });
+
+                // Copy styles
+                [...document.styleSheets].forEach((styleSheet) => {
+                    try {
+                        const cssRules = [...styleSheet.cssRules].map((rule) => rule.cssText).join('');
+                        const style = document.createElement('style');
+                        style.textContent = cssRules;
+                        pipWindow.document.head.appendChild(style);
+                    } catch (e) {
+                        const link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.type = styleSheet.type;
+                        link.media = styleSheet.media;
+                        link.href = styleSheet.href;
+                        pipWindow.document.head.appendChild(link);
+                    }
+                });
+
+                // Set theme
+                pipWindow.document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme'));
+
+                // Initial render
+                updatePipContent();
+
+                pipWindow.addEventListener('pagehide', () => {
+                    pipWindow = null;
+                });
+            } catch (err) {
+                console.error('Failed to open PiP window:', err);
+            }
+        }
+
+        function updatePipContent() {
+            if (!pipWindow) return;
+
+            const doc = pipWindow.document;
+            const district = districts.find(d => d.id === currentDistrictId);
+            const nextName = document.getElementById('next-prayer-name')?.textContent || '--';
+            const h = document.getElementById('cd-hours')?.textContent || '00';
+            const m = document.getElementById('cd-minutes')?.textContent || '00';
+            const s = document.getElementById('cd-seconds')?.textContent || '00';
+            const nextTimeStr = document.getElementById('next-prayer-time')?.textContent || '--:--';
+
+            if (!doc.getElementById('pip-container')) {
+                doc.body.innerHTML = `
+                    <div id="pip-container" style="padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; background: var(--bg-primary); color: var(--text-primary); transition: background 0.4s ease, color 0.4s ease; overflow: hidden;">
+                        <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-primary); margin-bottom: 4px;" id="pip-district">${district?.name || ''}</div>
+                        <div style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px;">Next Prayer</div>
+                        <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; line-height: 1;" id="pip-next-name">${nextName}</div>
+                        <div style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 4px;" id="pip-next-time">${nextTimeStr}</div>
+                        <div style="display: flex; gap: 6px; align-items: center; font-family: var(--font-display); font-weight: 800; font-size: 2rem; line-height: 1;">
+                            <span id="pip-h">${h}</span><span style="opacity: 0.5;">:</span><span id="pip-m">${m}</span><span style="opacity: 0.5;">:</span><span id="pip-s">${s}</span>
+                        </div>
+                        <div style="margin-top: 12px; font-size: 0.6rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.05em;">SL Prayer Times</div>
+                    </div>
+                `;
+            } else {
+                const districtEl = doc.getElementById('pip-district');
+                const nameEl = doc.getElementById('pip-next-name');
+                const timeEl = doc.getElementById('pip-next-time');
+                const hEl = doc.getElementById('pip-h');
+                const mEl = doc.getElementById('pip-m');
+                const sEl = doc.getElementById('pip-s');
+
+                if (districtEl) districtEl.textContent = district?.name || '';
+                if (nameEl) nameEl.textContent = nextName;
+                if (timeEl) timeEl.innerHTML = nextTimeStr;
+                if (hEl) hEl.textContent = h;
+                if (mEl) mEl.textContent = m;
+                if (sEl) sEl.textContent = s;
+
+                doc.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme'));
+            }
+        }
+
         // Prayer Times
         let prayerData = null;
         let tickInterval = null;
@@ -1650,6 +1745,7 @@
                     const times = district.prayer_times?.[now.getMonth() + 1]?.[now.getDate()];
                     if (times) updateNext(times);
                 }
+                if (pipWindow) updatePipContent();
             }, 1000);
         }
 
@@ -1762,6 +1858,11 @@
             render();
             updateSEO();
             startTick();
+
+            if ('documentPictureInPicture' in window) {
+                const pipBtn = document.getElementById('pip-btn');
+                if (pipBtn) pipBtn.style.display = 'flex';
+            }
         }
 
         // Mission Modal
