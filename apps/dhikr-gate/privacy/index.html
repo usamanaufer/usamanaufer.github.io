@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Dhikr Gate</title>
+    <meta name="description" content="Privacy policy for the Dhikr Gate mobile application.">
+    <link rel="icon" href="/dhikrgate.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../app.css">
+    <style>
+        .privacy-page {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10rem 2rem 5rem;
+        }
+
+        .privacy-page h1 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-page h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .privacy-page p, .privacy-page li {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .privacy-page ul {
+            margin-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-stellar" aria-hidden="true"></div>
+
+    <div class="container">
+        <article class="privacy-page" data-reveal>
+            <a href="../" class="back-link">← Back to Dhikr Gate</a>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: April 16, 2026</p>
+
+            <p>At Dhikr Gate, we believe that your spiritual journey is deeply personal. Our privacy philosophy is simple: your data stays yours. This policy outlines how we handle information in the Dhikr Gate mobile application.</p>
+
+            <h2>1. No Data Collection</h2>
+            <p><strong>We do not collect, store, or transmit your personal data.</strong> Dhikr Gate is built to operate entirely on your device. We do not require account creation, and we have no access to your identity, contact information, or usage patterns.</p>
+
+            <h2>2. On-Device Processing</h2>
+            <p>All core features of the app are powered by on-device logic:</p>
+            <ul>
+                <li><strong>Location:</strong> Used solely to calculate accurate prayer times for your current coordinates. This processing happens entirely on your phone; your location is never sent to our servers.</li>
+                <li><strong>Family Controls (Screen Time):</strong> We utilize Apple's Screen Time API to help you manage distractions. We cannot see your browsing history, message content, or any data within the apps you choose to shield.</li>
+                <li><strong>Dhikr Logs:</strong> Your progress and history of remembrance are stored locally on your device within an encrypted container.</li>
+            </ul>
+
+            <h2>3. Subscriptions & Payments</h2>
+            <p>We use <strong>RevenueCat</strong> to manage premium subscriptions. When you make a purchase, RevenueCat may process anonymized transaction identifiers to verify your Pro status. No personal financial information is ever shared with us. For more information, please review the <a href="https://www.revenuecat.com/privacy" style="color: var(--accent);">RevenueCat Privacy Policy</a>.</p>
+
+            <h2>4. Security</h2>
+            <p>Since we do not store your data on any cloud servers, it is protected by the native security features of your iPhone. We recommend keeping your device updated to the latest iOS version for optimal protection.</p>
+
+            <h2>5. Changes to This Policy</h2>
+            <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.</p>
+
+            <h2>6. Contact Us</h2>
+            <p>If you have any questions or concerns about our privacy practices, please reach out to us at <a href="mailto:contact@usamanaufer.online" style="color: var(--accent);">contact@usamanaufer.online</a>.</p>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-shell">
+            <div class="footer-logo">
+                <img src="../../../dhikrgate.png" alt="">
+                <span>Dhikr Gate</span>
+            </div>
+            <nav class="footer-links">
+                <a href="../../../">More Apps</a>
+                <a href="mailto:contact@usamanaufer.online">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal elements on scroll
+        const revealItems = document.querySelectorAll("[data-reveal]");
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in-view");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+    </script>
+</body>
+
+</html>

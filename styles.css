@@ -303,6 +303,11 @@ body {
     transform: translateY(-8px);
 }
 
+.app-card.dhikrgate:hover {
+    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.25), 0 8px 20px rgba(6, 182, 212, 0.15);
+    transform: translateY(-8px);
+}
+
 /* Icon Container - Gradient backgrounds per app */
 .card-icon-wrapper {
     border-radius: 20px;
@@ -324,6 +329,10 @@ body {
 
 .app-card.scanner .card-icon-wrapper {
     background: linear-gradient(145deg, rgba(255, 153, 102, 0.12), rgba(255, 94, 98, 0.08));
+}
+
+.app-card.dhikrgate .card-icon-wrapper {
+    background: linear-gradient(145deg, rgba(6, 182, 212, 0.12), rgba(8, 145, 178, 0.08));
 }
 
 /* Larger, polished app icons */
@@ -367,6 +376,10 @@ body {
 
 .app-card.scanner .app-category {
     color: #ff5e62;
+}
+
+.app-card.dhikrgate .app-category {
+    color: #06b6d4;
 }
 
 .app-category {
@@ -422,6 +435,13 @@ body {
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(255, 94, 98, 0.3);
+}
+
+.app-card.dhikrgate .btn-app:hover {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
 }
 
 .card-actions {
