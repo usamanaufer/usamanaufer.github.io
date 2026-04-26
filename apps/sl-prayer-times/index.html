@@ -14,9 +14,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-itunes-app" content="app-id=6758813401">
-    <title>SL Prayer Times - Accurate Athan & Qibla for Sri Lanka</title>
+    <title>Sri Lanka Prayer Times - ACJU Salah, Qibla &amp; Halal Finder</title>
     <meta name="description"
-        content="The most accurate, ACJU-verified prayer times app for Sri Lanka. Get precise Athan alerts, Qibla direction, Islamic calendar, and widgets for all 25 districts.">
+        content="Sri Lanka Prayer Times brings ACJU-based salah times, widgets, salah tracking, halal finder, Qibla finder, Islamic calendar, and district timings into one clean app.">
     <link rel="canonical" href="https://usamanaufer.online/apps/sl-prayer-times/">
 
     <!-- Favicon -->
@@ -26,8 +26,9 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usamanaufer.online/apps/sl-prayer-times/">
-    <meta property="og:title" content="SL Prayer Times - Accurate Athan & Qibla for Sri Lanka">
-    <meta property="og:description" content="ACJU-verified prayer times for all 25 districts. Never miss a prayer.">
+    <meta property="og:title" content="Sri Lanka Prayer Times - ACJU Salah, Qibla &amp; Halal Finder">
+    <meta property="og:description"
+        content="ACJU-based prayer times with widgets, salah tracking, halal finder, Qibla finder, and district timings for Sri Lanka.">
     <meta property="og:site_name" content="SL Prayer Times">
     <meta property="og:image" content="https://usamanaufer.online/apps/sl-prayer-times/srilankaprayertimes.png?v=3">
     <meta property="og:image:secure_url"
@@ -39,9 +40,9 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://usamanaufer.online/apps/sl-prayer-times/">
-    <meta property="twitter:title" content="SL Prayer Times - Accurate Athan & Qibla for Sri Lanka">
+    <meta property="twitter:title" content="Sri Lanka Prayer Times - ACJU Salah, Qibla &amp; Halal Finder">
     <meta property="twitter:description"
-        content="ACJU-verified prayer times for all 25 districts. Never miss a prayer.">
+        content="ACJU-based prayer times with widgets, salah tracking, halal finder, Qibla finder, and district timings for Sri Lanka.">
     <meta property="twitter:image"
         content="https://usamanaufer.online/apps/sl-prayer-times/srilankaprayertimes.png?v=3">
 
@@ -49,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -64,6 +65,16 @@
         "name": "SL Prayer Times",
         "operatingSystem": "iOS, Android",
         "applicationCategory": "LifestyleApplication",
+        "featureList": [
+            "ACJU-based prayer times for Sri Lanka",
+            "Home screen and lock screen widgets",
+            "Salah tracking",
+            "Halal finder",
+            "Qibla finder",
+            "District-based prayer timings",
+            "Islamic calendar",
+            "Azan notifications"
+        ],
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
@@ -86,7 +97,7 @@
             "name": "What is the most accurate prayer time app for Sri Lanka?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "SL Prayer Times is the most accurate app for Sri Lanka, using ACJU-verified calculations for all 25 districts including Colombo, Kandy, and Galle."
+                "text": "SL Prayer Times is the most accurate app for Sri Lanka, using ACJU-verified calculations for 27 prayer regions including Colombo, Kandy, and Galle."
             }
         }, {
             "@type": "Question",
@@ -122,17 +133,17 @@
     <a href="#main" class="skip-link">Skip to content</a>
     <div class="bg-gradient" aria-hidden="true"></div>
 
-    <div class="container">
+    <div class="site-shell">
         <!-- Navigation -->
-        <nav class="nav fade-up" style="display: flex; justify-content: space-between; align-items: center;">
+        <nav class="nav fade-up">
             <div class="breadcrumb" aria-label="Breadcrumb">
                 <a href="../../">Apps</a>
                 <span class="separator">/</span>
-                <span class="current">SL Prayer Times</span>
+                <span class="current">Sri Lanka Prayer Times</span>
             </div>
-            <div style="display: flex; gap: 12px;">
-                <button onclick="openMissionModal()" class="nav-back" style="cursor: pointer; font-family: inherit;">
-                    <i class="ri-heart-line" style="font-size: 1.1rem;"></i>
+            <div class="nav-actions">
+                <button onclick="openMissionModal()" class="nav-back">
+                    <i class="ri-heart-line" aria-hidden="true"></i>
                     Mission
                 </button>
                 <a href="../../" class="nav-back" aria-label="Back to portfolio">
@@ -146,230 +157,392 @@
         <main id="main">
             <!-- Hero -->
             <section class="hero">
-                <div class="hero-badge fade-up">
-                    <i class="ri-shield-check-fill" aria-hidden="true"></i>
-                    Based on ACJU
+                <div class="hero-copy">
+                    <div class="hero-kicker fade-up">
+                        <img src="/apps/sl-prayer-times/app-icon.png" alt="" width="36" height="36">
+                        <span>Built for Muslims in Sri Lanka</span>
+                    </div>
+
+                    <h1 class="fade-up delay-1">Sri Lanka Prayer Times</h1>
+
+                    <p class="hero-description fade-up delay-2">
+                        ACJU-based salah times, widgets, Qibla, salah tracking, and halal places in one calm daily app.
+                    </p>
+
+                    <div class="download-group fade-up delay-3">
+                        <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
+                            class="btn-download" aria-label="Download on App Store">
+                            <i class="ri-apple-fill" aria-hidden="true"></i>
+                            App Store
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=lk.usamanaufer.srilankaprayertime" class="btn-download btn-download-light"
+                            aria-label="Get it on Google Play">
+                            <i class="ri-google-play-fill" aria-hidden="true"></i>
+                            Google Play
+                        </a>
+                    </div>
+
+                    <div class="hero-proof fade-up delay-4" aria-label="Highlights">
+                        <span><i class="ri-shield-check-fill" aria-hidden="true"></i> ACJU based</span>
+                        <span><i class="ri-map-pin-2-fill" aria-hidden="true"></i> 27 prayer regions</span>
+                        <span><i class="ri-megaphone-fill" aria-hidden="true"></i> Azan alerts</span>
+                    </div>
                 </div>
 
-                <img src="/apps/sl-prayer-times/app-icon.png" alt="SL Prayer Times App Icon"
-                    class="app-icon fade-up delay-1" width="88" height="88">
-
-                <h1 class="fade-up delay-2">
-                    Sri Lanka <span>Prayer Times</span>
-                </h1>
-
-                <p class="hero-description fade-up delay-3">
-                    The most accurate <strong>Sri Lanka Prayer Times</strong> companion for every home. Based on ACJU
-                    timings, Qibla
-                    direction, and more.
-                </p>
-
-                <div class="download-group fade-up delay-4">
-                    <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
-                        class="btn-download" aria-label="Download on App Store">
-                        <i class="ri-apple-fill" aria-hidden="true"></i>
-                        App Store
-                    </a>
-                    <a href="javascript:void(0)" onclick="showToast()" class="btn-download"
-                        aria-label="Get it on Google Play">
-                        <i class="ri-google-play-fill" aria-hidden="true"></i>
-                        Google Play
-                    </a>
-                </div>
-            </section>
-
-            <!-- Phone Showcase -->
-            <section class="showcase" aria-label="App Screenshots">
-                <div class="phones">
-                    <div class="phone phone-side">
-                        <img src="./screenshot_onboarding.png" alt="Welcome screen" loading="lazy" width="280"
-                            height="571">
-                    </div>
-                    <div class="phone phone-center">
-                        <img src="./screenshot_home.png" alt="Prayer times display" width="300" height="612">
-                    </div>
-                    <div class="phone phone-side">
-                        <img src="./screenshot_calendar.png" alt="Islamic calendar" loading="lazy" width="280"
-                            height="571">
-                    </div>
+                <div class="hero-visual fade-up delay-2" aria-label="App preview">
+                    <img class="mockup-image hero-mockup" src="./screenshots/main.png"
+                        alt="Sri Lanka Prayer Times app showing today's prayer times" width="1530" height="3036">
                 </div>
             </section>
+
+            <section class="quick-features reveal" aria-label="Core features">
+                <a href="#widgets" class="quick-feature">
+                    <i class="ri-layout-4-line" aria-hidden="true"></i>
+                    <span>Widgets</span>
+                </a>
+                <a href="#track-salah" class="quick-feature">
+                    <i class="ri-checkbox-circle-line" aria-hidden="true"></i>
+                    <span>Track Salah</span>
+                </a>
+                <a href="#halal-finder" class="quick-feature">
+                    <i class="ri-restaurant-line" aria-hidden="true"></i>
+                    <span>Halal Finder</span>
+                </a>
+                <a href="#qibla-finder" class="quick-feature">
+                    <i class="ri-compass-3-line" aria-hidden="true"></i>
+                    <span>Qibla Finder</span>
+                </a>
+            </section>
+
             <!-- Live Prayer Times -->
-            <section id="prayer-times" class="prayer-times fade-up delay-2" aria-labelledby="prayer-times-heading">
-                <div class="prayer-card">
-                    <div class="prayer-card-header">
-                        <div class="district-selector">
-                            <i class="ri-map-pin-2-fill" aria-hidden="true"></i>
-                            <select id="district-select" aria-label="Select District">
-                                <option value="colombo">Colombo</option>
-                                <option value="kandy">Kandy</option>
-                                <option value="galle">Galle</option>
-                                <option value="jaffna">Jaffna</option>
-                                <option value="gampaha">Gampaha</option>
-                                <option value="kalutara">Kalutara</option>
-                                <option value="matale">Matale</option>
-                                <option value="nuwara-eliya">Nuwara Eliya</option>
-                                <option value="matara">Matara</option>
-                                <option value="hambantota">Hambantota</option>
-                                <option value="mannar">Mannar</option>
-                                <option value="vavuniya">Vavuniya</option>
-                                <option value="mullaittivu">Mullaittivu</option>
-                                <option value="batticaloa">Batticaloa</option>
-                                <option value="ampara">Ampara</option>
-                                <option value="trincomalee">Trincomalee</option>
-                                <option value="kurunegala">Kurunegala</option>
-                                <option value="puttalam">Puttalam</option>
-                                <option value="anuradhapura">Anuradhapura</option>
-                                <option value="polonnaruwa">Polonnaruwa</option>
-                                <option value="badulla">Badulla</option>
-                                <option value="moneragala">Moneragala</option>
-                                <option value="ratnapura">Ratnapura</option>
-                                <option value="kegalle">Kegalle</option>
-                                <option value="kilinochchi">Kilinochchi</option>
-                            </select>
-                        </div>
-                        <div class="current-date" id="display-date">Loading...</div>
+            <section id="prayer-times" class="prayer-times reveal" aria-labelledby="prayer-times-heading">
+                <div class="section-eyebrow">Today in Sri Lanka</div>
+                <div class="prayer-layout">
+                    <div class="section-copy">
+                        <h2 id="prayer-times-heading">Check prayer times before you download.</h2>
+                        <p>Choose any district and preview today's Fajr, Dhuhr, Asr, Maghrib, and Isha timings.</p>
                     </div>
 
-                    <div class="next-prayer-highlight">
-                        <span class="label">Next Prayer</span>
-                        <h2 id="next-prayer-name">--:--</h2>
-                        <div class="countdown" id="prayer-countdown">--:--:--</div>
-                    </div>
+                    <div class="prayer-card">
+                        <div class="prayer-card-header">
+                            <div class="district-selector">
+                                <i class="ri-map-pin-2-fill" aria-hidden="true"></i>
+                                <select id="district-select" aria-label="Select District">
+                                    <option value="colombo">Colombo</option>
+                                    <option value="kandy">Kandy</option>
+                                    <option value="galle">Galle</option>
+                                    <option value="jaffna">Jaffna</option>
+                                    <option value="gampaha">Gampaha</option>
+                                    <option value="kalutara">Kalutara</option>
+                                    <option value="matale">Matale</option>
+                                    <option value="nuwara-eliya">Nuwara Eliya</option>
+                                    <option value="matara">Matara</option>
+                                    <option value="hambantota">Hambantota</option>
+                                    <option value="mannar">Mannar</option>
+                                    <option value="vavuniya">Vavuniya</option>
+                                    <option value="mullaittivu">Mullaittivu</option>
+                                    <option value="batticaloa">Batticaloa</option>
+                                    <option value="ampara">Ampara</option>
+                                    <option value="trincomalee">Trincomalee</option>
+                                    <option value="kurunegala">Kurunegala</option>
+                                    <option value="puttalam">Puttalam</option>
+                                    <option value="anuradhapura">Anuradhapura</option>
+                                    <option value="polonnaruwa">Polonnaruwa</option>
+                                    <option value="badulla">Badulla</option>
+                                    <option value="moneragala">Moneragala</option>
+                                    <option value="ratnapura">Ratnapura</option>
+                                    <option value="kegalle">Kegalle</option>
+                                    <option value="kilinochchi">Kilinochchi</option>
+                                </select>
+                            </div>
+                            <div class="current-date" id="display-date">Loading...</div>
+                        </div>
 
-                    <div class="prayer-grid" id="prayer-grid">
-                        <div class="prayer-item" data-prayer="fajr">
-                            <span class="p-name">Fajr</span>
-                            <span class="p-time">--:--</span>
+                        <div class="next-prayer-highlight">
+                            <span class="label">Next Prayer</span>
+                            <h3 id="next-prayer-name">--:--</h3>
+                            <div class="countdown" id="prayer-countdown">--:--:--</div>
                         </div>
-                        <div class="prayer-item" data-prayer="sunrise">
-                            <span class="p-name">Sunrise</span>
-                            <span class="p-time">--:--</span>
-                        </div>
-                        <div class="prayer-item" data-prayer="dhuhr">
-                            <span class="p-name">Dhuhr</span>
-                            <span class="p-time">--:--</span>
-                        </div>
-                        <div class="prayer-item" data-prayer="asr">
-                            <span class="p-name">Asr</span>
-                            <span class="p-time">--:--</span>
-                        </div>
-                        <div class="prayer-item" data-prayer="maghrib">
-                            <span class="p-name">Maghrib</span>
-                            <span class="p-time">--:--</span>
-                        </div>
-                        <div class="prayer-item" data-prayer="isha">
-                            <span class="p-name">Isha</span>
-                            <span class="p-time">--:--</span>
+
+                        <div class="prayer-grid" id="prayer-grid">
+                            <div class="prayer-item" data-prayer="fajr">
+                                <span class="p-name">Fajr</span>
+                                <span class="p-time">--:--</span>
+                            </div>
+                            <div class="prayer-item" data-prayer="sunrise">
+                                <span class="p-name">Sunrise</span>
+                                <span class="p-time">--:--</span>
+                            </div>
+                            <div class="prayer-item" data-prayer="dhuhr">
+                                <span class="p-name">Dhuhr</span>
+                                <span class="p-time">--:--</span>
+                            </div>
+                            <div class="prayer-item" data-prayer="asr">
+                                <span class="p-name">Asr</span>
+                                <span class="p-time">--:--</span>
+                            </div>
+                            <div class="prayer-item" data-prayer="maghrib">
+                                <span class="p-name">Maghrib</span>
+                                <span class="p-time">--:--</span>
+                            </div>
+                            <div class="prayer-item" data-prayer="isha">
+                                <span class="p-name">Isha</span>
+                                <span class="p-time">--:--</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Features -->
-            <section class="features" aria-labelledby="features-heading">
+            <!-- Feature Showcase -->
+            <section class="feature-showcase" aria-labelledby="features-heading">
                 <div class="section-header">
-                    <h2 id="features-heading">Everything You Need</h2>
-                    <p>Built for the Sri Lankan Muslim community</p>
+                    <div class="section-eyebrow">Features</div>
+                    <h2 id="features-heading">Everything useful, without clutter.</h2>
+                    <p>Prayer times are the center. The rest is built around daily Sri Lankan Muslim life.</p>
                 </div>
 
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><i class="ri-time-line"></i></div>
-                        <h3>Accurate Times</h3>
-                        <p>Prayer times based on ACJU standards for all 25 districts across Sri Lanka.</p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><i class="ri-compass-3-line"></i></div>
-                        <h3>Qibla Finder</h3>
-                        <p>Digital compass to find the correct direction for prayer.</p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><i class="ri-notification-3-line"></i></div>
-                        <h3>Smart Alerts</h3>
-                        <p>Customizable Azan notifications so you never miss a prayer.</p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><i class="ri-calendar-line"></i></div>
-                        <h3>Hijri Calendar</h3>
-                        <p>Islamic calendar with important dates and events.</p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><i class="ri-map-pin-line"></i></div>
-                        <h3>All Districts</h3>
-                        <p>Switch between 25 districts for precise local times.</p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true"><i class="ri-wifi-off-line"></i></div>
-                        <h3>Works Offline</h3>
-                        <p>Local storage ensures the app works without internet.</p>
-                    </article>
-                </div>
-
-                <!-- Beta Testing CTA -->
-                <div class="beta-cta fade-up delay-4">
-                    <div class="beta-cta-content">
-                        <div class="beta-cta-badge">Android Users</div>
-                        <h3>Beta Testing in Progress</h3>
-                        <p>Our beta testing is currently underway. Check the status page for more information on the
-                            upcoming Play Store release.</p>
-                        <a href="./beta/index.html" class="btn-beta">Check Status <i
-                                class="ri-arrow-right-line"></i></a>
+                <article class="feature-story reveal" id="widgets">
+                    <div class="feature-media">
+                        <img class="mockup-image" src="./screenshots/widgets.png"
+                            alt="Sri Lanka Prayer Times widgets and lock screen widgets preview" loading="lazy"
+                            width="1530" height="3036">
                     </div>
-                </div>
-            </section>
-
-            <!-- Widget Section -->
-            <section class="widget-section" aria-labelledby="widget-heading">
-                <div class="widget-grid">
-                    <div class="widget-image">
-                        <img src="./screenshot_widgets.png" alt="Home screen widgets" loading="lazy" width="380"
-                            height="774">
-                    </div>
-                    <div class="widget-content">
-                        <h2 id="widget-heading">Home Screen Widgets</h2>
-                        <p>Quick glance at prayer times right from your home screen. Multiple sizes available.</p>
-                        <ul class="widget-list">
-                            <li><i class="ri-check-line" aria-hidden="true"></i> Small & medium sizes</li>
+                    <div class="feature-copy">
+                        <span class="feature-number">01</span>
+                        <h3>Widgets that keep salah visible.</h3>
+                        <p>Lock screen and home screen widgets help you glance at the next prayer without opening the
+                            app.</p>
+                        <ul class="feature-list">
                             <li><i class="ri-check-line" aria-hidden="true"></i> Next prayer countdown</li>
-                            <li><i class="ri-check-line" aria-hidden="true"></i> Full daily schedule</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Daily prayer schedule</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Designed for quick checks</li>
                         </ul>
                     </div>
+                </article>
+
+                <article class="feature-story feature-story-reverse reveal" id="track-salah">
+                    <div class="feature-media">
+                        <img class="mockup-image" src="./screenshots/prayer-tracker.png"
+                            alt="Salah tracking screen in the app" loading="lazy" width="1530" height="3036">
+                    </div>
+                    <div class="feature-copy">
+                        <span class="feature-number">02</span>
+                        <h3>Track Salah with a gentle daily rhythm.</h3>
+                        <p>Mark completed prayers and build awareness across the day without turning worship into a
+                            noisy dashboard.</p>
+                        <ul class="feature-list">
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Simple completion tracking</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Clear daily progress</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Built around the five prayers</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="feature-story reveal" id="halal-finder">
+                    <div class="feature-media">
+                        <img class="mockup-image" src="./screenshots/halal-finder.png"
+                            alt="Halal finder screen showing halal places in Sri Lanka" loading="lazy" width="1530"
+                            height="3036">
+                    </div>
+                    <div class="feature-copy">
+                        <span class="feature-number">03</span>
+                        <h3>Find halal places nearby.</h3>
+                        <p>Halal Finder helps you discover places to eat and visit with confidence when you are out in
+                            Sri Lanka.</p>
+                        <ul class="feature-list">
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Place discovery</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Built into the prayer app</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Useful while travelling</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="feature-story feature-story-reverse reveal" id="qibla-finder">
+                    <div class="feature-media">
+                        <img class="mockup-image" src="./screenshots/qibl-afinder.png"
+                            alt="Qibla finder compass screen" loading="lazy" width="1530" height="3036">
+                    </div>
+                    <div class="feature-copy">
+                        <span class="feature-number">04</span>
+                        <h3>Find the Qibla wherever you are.</h3>
+                        <p>A clear compass view gives you the direction for prayer at home, at work, or while travelling.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Direction-first compass</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Works across Sri Lanka</li>
+                            <li><i class="ri-check-line" aria-hidden="true"></i> Calm, readable interface</li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <section class="district-band reveal" aria-labelledby="districts-heading">
+                <div class="district-copy">
+                    <div class="section-eyebrow">Local accuracy</div>
+                    <h2 id="districts-heading">Timings for all 27 prayer regions.</h2>
+                    <p>Switch from Colombo to Kandy, Galle, Jaffna, Batticaloa, Puttalam, or any Sri Lankan district
+                        with district-based prayer times.</p>
+                </div>
+                <div class="district-stat" aria-label="Sri Lanka district coverage">
+                    <strong>27</strong>
+                    <span>Sri Lankan prayer regions covered</span>
                 </div>
             </section>
 
-            <!-- Districts -->
-            <section class="districts" aria-labelledby="districts-heading">
-                <div class="districts-pill">
-                    <i class="ri-map-2-line" aria-hidden="true"></i>
-                    <span id="districts-heading">25 Districts</span>
+            <section class="included reveal" aria-labelledby="included-heading">
+                <div class="section-header">
+                    <div class="section-eyebrow">Also included</div>
+                    <h2 id="included-heading">The details a daily prayer app needs.</h2>
                 </div>
-                <p>From Colombo to Jaffna — accurate times for your exact location.</p>
+                <div class="included-grid">
+                    <article>
+                        <i class="ri-notification-3-line" aria-hidden="true"></i>
+                        <h3>Azan alerts</h3>
+                        <p>Timely reminders for each prayer.</p>
+                    </article>
+                    <article>
+                        <i class="ri-calendar-line" aria-hidden="true"></i>
+                        <h3>Islamic calendar</h3>
+                        <p>Hijri dates and important Islamic moments.</p>
+                    </article>
+                    <article>
+                        <i class="ri-wifi-off-line" aria-hidden="true"></i>
+                        <h3>Offline friendly</h3>
+                        <p>Prayer data stays available when signal is weak.</p>
+                    </article>
+                    <article>
+                        <i class="ri-advertisement-line" aria-hidden="true"></i>
+                        <h3>No ads</h3>
+                        <p>A clean app for a sacred daily routine.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="reviews reveal" aria-labelledby="reviews-heading">
+                <div class="reviews-copy">
+                    <div class="section-eyebrow">App Store reviews</div>
+                    <h2 id="reviews-heading">Loved for accuracy, clean design, and no ads.</h2>
+                    <p>Selected from clear, fully positive App Store feedback about the daily prayer experience.</p>
+                </div>
+
+                <div class="rating-lockup-container">
+                    <div class="rating-lockup">
+                        <strong>4.7</strong>
+                        <span>out of 5</span>
+                        <small>523 App Store ratings</small>
+                    </div>
+                </div>
+
+                <div class="reviews-grid">
+                    <article class="review-quote" style="--item-index: 0">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3>Truly impressed</h3>
+                        <p>"Ma Sha Allah I'm truly impressed... This is the first time in Sri Lanka that I've experienced such accurate, district-based Azan times. Highly recommended."</p>
+                        <footer>
+                            <span>Briaaaan.</span>
+                        </footer>
+                    </article>
+
+                    <article class="review-quote" style="--item-index: 1">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3>Marvelous job</h3>
+                        <p>"Marvelous job and very thoughtful of you to come up with such a great idea. Top App and has all the features needed for an app."</p>
+                        <footer>
+                            <span>Kandygs</span>
+                        </footer>
+                    </article>
+
+                    <article class="review-quote" style="--item-index: 2">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3>Simply the best</h3>
+                        <p>"Simply the easiest and best app. Absolutely love the widget feature. Makes checking prayer times so much easier during the day."</p>
+                        <footer>
+                            <span>Maab7</span>
+                        </footer>
+                    </article>
+
+                    <article class="review-quote" style="--item-index: 3">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3>Beautiful UI/UX</h3>
+                        <p>"Thank you for a wonderful app & your UI/UX design, especially for the Muslims. Really appreciated for your hard work!"</p>
+                        <footer>
+                            <span>AQ💎</span>
+                        </footer>
+                    </article>
+
+                    <article class="review-quote" style="--item-index: 4">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3>Thoughtfully made</h3>
+                        <p>"A perfect app which I have been looking for.. really amazing. Thoughtfully made and definitely better than all the other apps I have used."</p>
+                        <footer>
+                            <span>Zara (2)</span>
+                        </footer>
+                    </article>
+
+                    <article class="review-quote" style="--item-index: 5">
+                        <div class="review-stars" aria-label="5 out of 5 stars">
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                            <i class="ri-star-fill" aria-hidden="true"></i>
+                        </div>
+                        <h3>Amazing Initiative</h3>
+                        <p>"Amazing Initiative... A very helpful project for Sri Lankan Muslims. May Allah reward you for your efforts and keep this project growing."</p>
+                        <footer>
+                            <span>Ammarah.</span>
+                        </footer>
+                    </article>
+                </div>
             </section>
 
 
             <!-- CTA -->
-            <section class="cta" aria-labelledby="cta-heading">
-                <div class="cta-card">
-                    <h2 id="cta-heading">Download Free</h2>
-                    <div class="cta-buttons-wrapper">
-                        <div class="cta-badge">Official ACJU Standard Data</div>
-                        <div class="cta-buttons">
-                            <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
-                                class="btn-download" aria-label="Download on App Store">
-                                <i class="ri-apple-fill" aria-hidden="true"></i> App Store
-                            </a>
-                            <a href="javascript:void(0)" onclick="showToast()" class="btn-cta"
-                                aria-label="Get it on Google Play">
-                                <i class="ri-google-play-fill" aria-hidden="true"></i> Google Play
-                            </a>
-                        </div>
-                    </div>
+            <section class="cta reveal" aria-labelledby="cta-heading">
+                <div class="cta-copy">
+                    <h2 id="cta-heading">Download Sri Lanka Prayer Times free.</h2>
+                    <p>ACJU-based prayer times, widgets, salah tracking, halal finder, and Qibla finder for Sri Lanka.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://apps.apple.com/lk/app/sri-lanka-prayer-times-azan/id6758813401"
+                        class="btn-download" aria-label="Download on App Store">
+                        <i class="ri-apple-fill" aria-hidden="true"></i> App Store
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=lk.usamanaufer.srilankaprayertime" class="btn-download btn-download-light"
+                        aria-label="Get it on Google Play">
+                        <i class="ri-google-play-fill" aria-hidden="true"></i> Google Play
+                    </a>
                 </div>
             </section>
         </main>
@@ -440,24 +613,23 @@
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast" role="alert" aria-live="polite">
-        <i class="ri-information-fill"></i>
-        <span>Coming soon. <a href="./beta/index.html"
-                style="color: var(--emerald-400); text-decoration: underline;">Check
-                Status</a></span>
-    </div>
 
     <script>
         let prayerData = null;
         let timerInterval = null;
 
         async function initPrayerTimes() {
+            const districtSelect = document.getElementById('district-select');
+            if (!districtSelect) return;
+
+            updateDisplayDate();
+
             try {
                 const response = await fetch('./prayer_data.json');
+                if (!response.ok) throw new Error(`Prayer data request failed: ${response.status}`);
+
                 prayerData = await response.json();
 
-                const districtSelect = document.getElementById('district-select');
                 districtSelect.addEventListener('change', () => updateUI());
 
                 // Set default district to Colombo if not stored
@@ -468,22 +640,55 @@
                 startTimer();
             } catch (error) {
                 console.error('Error loading prayer data:', error);
+                showPrayerDataError();
             }
         }
 
+        function updateDisplayDate() {
+            const dateEl = document.getElementById('display-date');
+            if (!dateEl) return;
+
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateEl.textContent = now.toLocaleDateString('en-LK', options);
+        }
+
+        function showPrayerDataError() {
+            const nextPrayerName = document.getElementById('next-prayer-name');
+            const countdown = document.getElementById('prayer-countdown');
+            const dateEl = document.getElementById('display-date');
+
+            if (nextPrayerName) nextPrayerName.textContent = 'Unavailable';
+            if (countdown) countdown.textContent = 'Try again soon';
+            if (dateEl) dateEl.textContent = 'Prayer data could not load';
+
+            document.querySelectorAll('.prayer-item .p-time').forEach(el => {
+                el.textContent = '--:--';
+            });
+        }
+
         function updateUI() {
-            if (!prayerData) return;
+            if (!prayerData) {
+                updateDisplayDate();
+                return;
+            }
 
             const districtId = document.getElementById('district-select').value;
             const district = prayerData.districts.find(d => d.id === districtId);
-            if (!district) return;
+            if (!district) {
+                showPrayerDataError();
+                return;
+            }
 
             const now = new Date();
             const month = now.getMonth() + 1;
             const day = now.getDate();
 
             const times = district.prayer_times[month][day];
-            if (!times) return;
+            if (!times) {
+                showPrayerDataError();
+                return;
+            }
 
             // Update Grid
             for (const [id, time] of Object.entries(times)) {
@@ -493,9 +698,7 @@
                 }
             }
 
-            // Update Date Display
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('display-date').textContent = now.toLocaleDateString('en-LK', options);
+            updateDisplayDate();
 
             updateNextPrayer(times);
         }
@@ -587,21 +790,53 @@
             }, 1000);
         }
 
-        document.addEventListener('DOMContentLoaded', initPrayerTimes);
-
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPrayerTimes);
+        } else {
+            initPrayerTimes();
         }
+
+        function initMotion() {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealEls = document.querySelectorAll('.reveal');
+
+            document.querySelectorAll('.included-grid article').forEach((item, index) => {
+                item.style.setProperty('--item-index', index);
+            });
+
+            if (reduceMotion || !('IntersectionObserver' in window)) {
+                revealEls.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                root: null,
+                threshold: 0.18,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            revealEls.forEach(el => revealObserver.observe(el));
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMotion);
+        } else {
+            initMotion();
+        }
+
 
         // Mission Modal
         function openMissionModal() {
             const modal = document.getElementById('mission-modal');
             if (modal) {
                 modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
             }
         }
@@ -610,6 +845,7 @@
             const modal = document.getElementById('mission-modal');
             if (modal) {
                 modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = '';
             }
         }
@@ -644,11 +880,12 @@
             if (ogDesc) ogDesc.setAttribute('content', description);
 
             // Update Twitter
-            const twTitle = document.querySelector('meta[name="twitter:title"]');
+            const twTitle = document.querySelector('meta[property="twitter:title"]');
             if (twTitle) twTitle.setAttribute('content', title);
         }
 
-        document.getElementById('district-select').addEventListener('change', updateSEOMeta);
+        const districtSelect = document.getElementById('district-select');
+        if (districtSelect) districtSelect.addEventListener('change', updateSEOMeta);
     </script>
 </body>
 
