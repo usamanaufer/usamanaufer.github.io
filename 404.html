@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Usama</title>
+    <meta name="description" content="The page you are looking for does not exist.">
+    <link rel="stylesheet" href="/styles.css">
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Remix Icons for UI elements -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 4rem);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .error-content {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .lottie-wrapper {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .error-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--text-primary);
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .back-home-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            dotlottie-player {
+                width: 250px !important;
+                height: 250px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="main-container">
+        <!-- Navigation (Simplified) -->
+        <nav class="navbar fade-in">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 1rem;">
+                    <div class="logo-icon"><i class="ri-code-s-slash-line"></i></div>
+                    <span class="email" style="text-decoration: none;">contact@usamanaufer.online</span>
+                </a>
+            </div>
+        </nav>
+
+        <section class="error-container fade-in delay-1">
+            <div class="error-content">
+                <div class="lottie-wrapper">
+                    <!-- Lottie Animation -->
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+                    <dotlottie-player 
+                        src="https://lottie.host/d564c22b-b223-48cf-bec7-d24fbd34883d/0LbjMena1M.lottie" 
+                        background="transparent" 
+                        speed="1" 
+                        style="width: 320px; height: 320px;" 
+                        loop 
+                        autoplay>
+                    </dotlottie-player>
+                </div>
+                
+                <h1 class="error-title">Oopsy! This page is empty.</h1>
+                <p class="error-message">Looks like you've landed in a spot with no details about me. My full portfolio and all the premium apps I've built are waiting for you over on the main page.</p>
+                
+                <a href="/" class="back-home-btn">
+                    <i class="ri-home-4-line"></i> Back to Home
+                </a>
+            </div>
+        </section>
+
+        <footer class="fade-in delay-3">
+            <p>&copy; 2026 Usama. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>

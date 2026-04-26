@@ -4,6 +4,11 @@
       "source": "/projects",
       "destination": "/#apps",
       "permanent": true
+    },
+    {
+      "source": "/apps",
+      "destination": "/#apps",
+      "permanent": true
     }
   ]
 }
