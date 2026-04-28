@@ -366,7 +366,7 @@ img {
 
 .quick-features {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: var(--space-4);
     padding: 0 0 var(--space-20);
 }
@@ -425,6 +425,7 @@ img {
 
 .section-copy h2,
 .section-header h2,
+.watch-update-copy h2,
 .reviews-copy h2,
 .district-copy h2,
 .cta h2,
@@ -439,6 +440,7 @@ img {
 
 .section-copy p,
 .section-header p,
+.watch-update-copy p,
 .district-copy p,
 .cta p,
 .beta-cta p {
@@ -451,6 +453,132 @@ img {
 .prayer-times {
     padding: var(--space-20) 0;
     border-top: 1px solid var(--line);
+}
+
+.watch-update {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+    gap: clamp(28px, 5vw, 64px);
+    align-items: end;
+    margin-bottom: var(--space-20);
+    padding: var(--space-8);
+    color: var(--white);
+    background: var(--ink);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.watch-update::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(16, 35, 31, 0.08), rgba(16, 35, 31, 0.72) 58%, rgba(16, 35, 31, 0.96)),
+        linear-gradient(0deg, rgba(16, 35, 31, 0.62), transparent 42%);
+    z-index: 1;
+}
+
+.watch-update-media {
+    position: absolute;
+    inset: 0;
+}
+
+.watch-update-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 1200ms var(--motion-soft), filter 1200ms var(--motion-soft);
+}
+
+.watch-update-copy,
+.watch-update-detail {
+    position: relative;
+    z-index: 2;
+}
+
+.watch-update-copy {
+    align-self: center;
+    max-width: 590px;
+    padding: clamp(72px, 10vw, 132px) 0 clamp(72px, 10vw, 132px);
+}
+
+.watch-update-copy p {
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.watch-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+}
+
+.watch-update .btn-download {
+    background: var(--white);
+    color: var(--ink);
+    border-color: rgba(255, 255, 255, 0.42);
+}
+
+.watch-update-detail {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-5);
+}
+
+.watch-portrait {
+    width: min(240px, 100%);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.38);
+    transform: translateY(18px) rotate(1.4deg);
+    transition: transform 900ms var(--motion-soft), box-shadow 900ms var(--motion-soft);
+}
+
+.watch-portrait img {
+    width: 100%;
+    height: auto;
+}
+
+.watch-list {
+    display: grid;
+    gap: var(--space-3);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.watch-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 48px;
+    padding: var(--space-3) var(--space-4);
+    color: rgba(255, 255, 255, 0.86);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-md);
+    font-weight: 850;
+    backdrop-filter: blur(10px);
+}
+
+.watch-list i {
+    color: #22d3ee;
+    font-size: 1.18rem;
+}
+
+.watch-update.is-visible .watch-update-media img {
+    transform: scale(1);
+    filter: saturate(1.04);
+}
+
+.watch-update.is-visible .watch-portrait {
+    transform: translateY(0) rotate(0deg);
+    box-shadow: 0 34px 76px rgba(0, 0, 0, 0.44);
 }
 
 .prayer-layout {
@@ -1345,6 +1473,7 @@ img {
 
     .hero,
     .prayer-layout,
+    .watch-update,
     .feature-story,
     .feature-story-reverse,
     .reviews,
@@ -1382,6 +1511,7 @@ img {
     .hero-kicker,
     .download-group,
     .hero-proof,
+    .watch-actions,
     .cta-buttons {
         justify-content: center;
     }
@@ -1402,10 +1532,30 @@ img {
 
     .section-header,
     .section-copy,
+    .watch-update-copy,
     .reviews-copy,
     .district-copy,
     .feature-copy {
         text-align: center;
+    }
+
+    .watch-update {
+        align-items: center;
+    }
+
+    .watch-update::after {
+        background:
+            linear-gradient(0deg, rgba(16, 35, 31, 0.94), rgba(16, 35, 31, 0.62) 52%, rgba(16, 35, 31, 0.2)),
+            linear-gradient(90deg, rgba(16, 35, 31, 0.34), rgba(16, 35, 31, 0.42));
+    }
+
+    .watch-update-copy {
+        padding: var(--space-16) 0 var(--space-8);
+    }
+
+    .watch-update-detail {
+        max-width: 420px;
+        margin: 0 auto;
     }
 
     .reviews-copy {
@@ -1491,6 +1641,7 @@ img {
     }
 
     .prayer-times,
+    .watch-update,
     .feature-showcase,
     .included,
     .reviews,
@@ -1498,6 +1649,21 @@ img {
     .beta-cta,
     .district-band {
         padding: var(--space-16) 0;
+    }
+
+    .watch-update {
+        gap: var(--space-8);
+        margin-bottom: var(--space-16);
+        padding: var(--space-5);
+        border-radius: var(--radius-xl);
+    }
+
+    .watch-update-copy {
+        padding: var(--space-12) 0 0;
+    }
+
+    .watch-portrait {
+        width: min(220px, 66vw);
     }
 
     .prayer-card {
