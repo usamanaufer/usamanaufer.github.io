@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usama | Indie App Developer & Product Designer</title>
     <meta name="description"
-        content="Usama is an Indie App Developer and Product Designer building premium mobile apps like ViralCap and SL Prayer Times. Specialized in clean design and polished user experiences.">
+        content="Usama is an Indie App Developer and Product Designer building premium mobile apps like Carby, ViralCap and SL Prayer Times. Specialized in clean design and polished user experiences.">
     <meta name="keywords"
-        content="Usama, Indie App Developer, Product Designer, ViralCap, Sri Lanka Prayer Times, Food Scanner, Mobile Apps, iOS Developer">
+        content="Usama, Indie App Developer, Product Designer, Carby, ViralCap, Sri Lanka Prayer Times, Food Scanner, Mobile Apps, iOS Developer">
     <link rel="canonical" href="https://usamanaufer.online">
 
     <!-- Open Graph / Facebook -->
@@ -17,7 +17,7 @@
     <meta property="og:title" content="Usama | Indie App Developer & Product Designer">
     <meta property="og:description"
         content="Building premium apps with a focus on polished design and utility. Explore my latest projects.">
-    <meta property="og:image" content="https://usamanaufer.online/og-image.jpg">
+    <meta property="og:image" content="https://usamanaufer.online/og-image.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -25,7 +25,10 @@
     <meta property="twitter:title" content="Usama | Indie App Developer & Product Designer">
     <meta property="twitter:description"
         content="Building premium apps with a focus on polished design and utility. Explore my latest projects.">
-    <meta property="twitter:image" content="https://usamanaufer.online/og-image.jpg">
+    <meta property="twitter:image" content="https://usamanaufer.online/og-image.png">
+
+    <link rel="icon" href="/dhikrgate.png" type="image/png">
+    <link rel="apple-touch-icon" href="/dhikrgate.png">
 
     <link rel="stylesheet" href="styles.css">
     <!-- Preconnect for fonts -->
@@ -36,6 +39,31 @@
         rel="stylesheet">
     <!-- Remix Icons for UI elements -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXYX4LQNPB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-JXYX4LQNPB');
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Usama Naufer",
+        "jobTitle": "Indie App Developer & Product Designer",
+        "url": "https://usamanaufer.online",
+        "sameAs": [
+            "https://github.com/usamanaufer",
+            "https://twitter.com/usamanaufer"
+        ],
+        "description": "Indie developer building premium mobile applications focusing on utility and polished user experience."
+    }
+    </script>
 </head>
 
 <body>
@@ -45,9 +73,9 @@
         <nav class="navbar fade-in">
             <div class="logo">
                 <div class="logo-icon"><i class="ri-code-s-slash-line"></i></div>
-                <span class="email">contact@usamanaufer.online</span>
+                <a href="mailto:contact@usamanaufer.online" class="email">contact@usamanaufer.online</a>
             </div>
-            <button class="menu-btn"><i class="ri-menu-4-line"></i></button>
+            <a href="#apps" class="menu-btn" style="display: flex; align-items: center; justify-content: center; text-decoration: none; color: inherit;"><i class="ri-apps-2-line"></i></a>
         </nav>
 
         <!-- Hero Section -->
@@ -123,7 +151,25 @@
                     </div>
                 </div>
 
-                <!-- App 4: Dhikr Gate -->
+                <!-- App 4: Carby -->
+                <div class="card app-card carby fade-in delay-6">
+                    <div class="card-icon-wrapper">
+                        <img src="./carby.png" alt="Carby App Icon - Vehicle Tracker"
+                            class="app-icon-large">
+                    </div>
+                    <div class="card-content">
+                        <h3>Carby</h3>
+                        <p class="app-category">Vehicle Tracker</p>
+                        <p class="app-description">Track fuel, expenses, maintenance, trips, and ownership insights.</p>
+                        <div class="card-actions">
+                            <a href="apps/carby/" class="btn-app">View App <i
+                                    class="ri-arrow-right-up-line"></i></a>
+                            <a href="apps/carby/privacy/" class="link-privacy">Privacy Policy</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App 5: Dhikr Gate -->
                 <div class="card app-card dhikrgate fade-in delay-6">
                     <div class="card-icon-wrapper">
                         <img src="./dhikrgate.png" alt="Dhikr Gate App Icon - Focus & Dhikr Companion"
@@ -146,7 +192,12 @@
             </div>
         </section>
 
-        <footer>
+        <footer class="fade-in delay-6">
+            <div class="social-links">
+                <a href="https://twitter.com/usamanaufer" target="_blank" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                <a href="https://github.com/usamanaufer" target="_blank" aria-label="GitHub"><i class="ri-github-line"></i></a>
+                <a href="mailto:contact@usamanaufer.online" aria-label="Email"><i class="ri-mail-line"></i></a>
+            </div>
             <p>&copy; 2026 Usama. All rights reserved.</p>
         </footer>
     </main>
